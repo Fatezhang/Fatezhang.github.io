@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>New Blog</title>
-    <url>/blog/20191124/new-blog/</url>
-    <content><![CDATA[<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3>]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Scaffold-Cloud —— SpringCloud微服务架构实践</title>
     <url>/blog/20191112/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E8%B7%B5/</url>
     <content><![CDATA[<p><img src="/blog/20191112/SpringCloud微服务架构实践/scaffold.png" alt="scaffold"></p>
