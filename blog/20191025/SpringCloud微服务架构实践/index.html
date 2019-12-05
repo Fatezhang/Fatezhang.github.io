@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zhangjiaheng.cn/blog/20191025/SpringCloud微服务架构实践/netflix.png">
 <meta property="og:image" content="http://zhangjiaheng.cn/blog/20191025/SpringCloud微服务架构实践/microservice.webp">
-<meta property="og:updated_time" content="2019-12-05T15:39:17.164Z">
+<meta property="og:updated_time" content="2019-12-05T16:59:28.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scaffold-Cloud —— SpringCloud微服务架构实践">
 <meta name="twitter:description" content="Scaffold-Cloud: SpringCloud微服务脚手架 幕布Scaffold-Cloud 是一个适用于开发者学习的 Spring-Cloud 微服务项目脚手架。项目期望集成大部分目前互联网公司使用的主流的Spring-Cloud微服务相关工具和服务。并结合一些实际的业务增加一些其他功能，如：分布式事务、定时任务、消息队列、日志分析等等，然后加入 CI/CD 并引入 docker 部署。">
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,485 字
+                  2,162 字
                 </span>
               
 
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5 min
+                  9 min
                 </span>
               
             </div>
@@ -461,8 +461,7 @@
 </blockquote>
 <p><strong>但是拆分成这么微小的微服务一定会碰到各种各样的问题——如何拆分？服务之间如何发现？如何授权？如何做负载均衡？如何管理多服务配置？如何跟踪调用链路？如何实时查看服务状态等等… … SpringCloud 就是以上一系列问题的 Solver。它提供了一整套的解决方案！</strong></p>
 <h4 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h4><p>首先，SpringCloud 并不是一个框架，而是一个微服务的规范，或者说是一个微服务工具集合。</p>
-<p>SpringCloud特点：</p>
-<ul>
+<h5 id="SpringCloud特点："><a href="#SpringCloud特点：" class="headerlink" title="SpringCloud特点："></a>SpringCloud特点：</h5><ul>
 <li>约定大于配置，基于 SpringBoot</li>
 <li>开发部署于各种环境，AWS，阿里云，PC 等</li>
 <li>隐藏组件复杂性，声明式配置，无 xml</li>
@@ -470,11 +469,175 @@
 <li>丰富的轻量级组件</li>
 <li>灵活选型，如注册发现可用 eureka，zookeeper 或者 Redis</li>
 </ul>
-<h3 id="SpringCloud-全家桶"><a href="#SpringCloud-全家桶" class="headerlink" title="SpringCloud 全家桶"></a><a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">SpringCloud 全家桶</a></h3><h2 id="项目创建的目的？"><a href="#项目创建的目的？" class="headerlink" title="项目创建的目的？"></a>项目创建的目的？</h2><p>第一个目的是为了本人能够熟悉和学习 Spring-Cloud 相关知识，不过在做了一段时间之后还是希望能够分享出来让更多的同学一起学习和讨论。</p>
-<h2 id="项目结构如何？"><a href="#项目结构如何？" class="headerlink" title="项目结构如何？"></a>项目结构如何？</h2><h2 id="项目已经集成了哪些功能？"><a href="#项目已经集成了哪些功能？" class="headerlink" title="项目已经集成了哪些功能？"></a>项目已经集成了哪些功能？</h2><ul>
-<li><a href="[http://zhangjiaheng.cn/blog/20190819/%E5%A6%82%E4%BD%95%E5%9C%A8Spring%20Cloud%E4%B8%AD%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8Rocket%20MQ/](http://zhangjiaheng.cn/blog/20190819/如何在Spring Cloud中优雅的使用Rocket MQ/">RocketMQ</a>)</li>
-<li><a href="[http://zhangjiaheng.cn/blog/20190806/%E6%88%91%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%EF%BC%9ALCN/](http://zhangjiaheng.cn/blog/20190806/我项目中使用的分布式事务：LCN/">分布式事务</a>)</li>
-<li>可视化JOB</li>
+<h5 id="SpringCloud-各版本组件及版本兼容性"><a href="#SpringCloud-各版本组件及版本兼容性" class="headerlink" title="SpringCloud 各版本组件及版本兼容性"></a>SpringCloud 各版本组件及<a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">版本兼容性</a></h5><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Edgware.SR6</th>
+<th>Greenwich.SR2</th>
+<th>Greenwich.BUILD-SNAPSHOT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spring-cloud-aws</td>
+<td>1.2.4.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-bus</td>
+<td>1.3.4.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-cli</td>
+<td>1.4.1.RELEASE</td>
+<td>2.0.0.RELEASE</td>
+<td>2.0.1.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-commons</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-contract</td>
+<td>1.2.7.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-config</td>
+<td>1.4.7.RELEASE</td>
+<td>2.1.3.RELEASE</td>
+<td>2.1.4.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-netflix</td>
+<td>1.4.7.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-security</td>
+<td>1.2.4.RELEASE</td>
+<td>2.1.3.RELEASE</td>
+<td>2.1.4.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-cloudfoundry</td>
+<td>1.1.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-consul</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-sleuth</td>
+<td>1.3.6.RELEASE</td>
+<td>2.1.1.RELEASE</td>
+<td>2.1.2.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-stream</td>
+<td>Ditmars.SR5</td>
+<td>Fishtown.SR3</td>
+<td>Fishtown.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-zookeeper</td>
+<td>1.2.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-boot</td>
+<td>1.5.21.RELEASE</td>
+<td>2.1.5.RELEASE</td>
+<td>2.1.8.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-task</td>
+<td>1.2.4.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-vault</td>
+<td>1.1.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-gateway</td>
+<td>1.0.3.RELEASE</td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-openfeign</td>
+<td></td>
+<td>2.1.2.RELEASE</td>
+<td>2.1.3.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>spring-cloud-function</td>
+<td>1.0.2.RELEASE</td>
+<td>2.0.2.RELEASE</td>
+<td>2.0.3.BUILD-SNAPSHOT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SpringCloud-全家桶"><a href="#SpringCloud-全家桶" class="headerlink" title="SpringCloud 全家桶"></a><a href="https://spring.io/projects/spring-cloud" target="_blank" rel="noopener">SpringCloud 全家桶</a></h3><h4 id="spring-cloud-netflix"><a href="#spring-cloud-netflix" class="headerlink" title="spring-cloud-netflix"></a>spring-cloud-netflix</h4><h5 id="eureka-原理："><a href="#eureka-原理：" class="headerlink" title="eureka 原理："></a>eureka 原理：</h5><ul>
+<li>服务启动时，调用 eureka 接口进行注册，Eureka Server 会存储这些信息，IP、端口、微服务名称等</li>
+<li>微服务启动之后，会周期性的发送心跳进行“续租”，默认 30 秒</li>
+<li>如果一定时间没有“续租”，默认 90 秒，就销毁微服务实例</li>
+<li>默认情况下，Eureka Server 也是一个 Eureka Client，集群下会互相复制服务注册表中的信息进行同步</li>
+<li>Eureka Client 会缓存注册表的信息，减少Eureka Server 的请求压力，以及容灾</li>
+</ul>
+<h4 id="spring-cloud-openfeign"><a href="#spring-cloud-openfeign" class="headerlink" title="spring-cloud-openfeign"></a>spring-cloud-openfeign</h4><h4 id="spring-cloud-zuul-微服务网关"><a href="#spring-cloud-zuul-微服务网关" class="headerlink" title="spring-cloud-zuul 微服务网关"></a>spring-cloud-zuul 微服务网关</h4><h2 id="项目创建的目的？"><a href="#项目创建的目的？" class="headerlink" title="项目创建的目的？"></a>项目创建的目的？</h2><p>第一个目的是为了本人能够熟悉和学习 Spring-Cloud 相关知识，不过在做了一段时间之后还是希望能够分享出来让更多的同学一起学习和讨论。</p>
+<h2 id="项目结构如何？"><a href="#项目结构如何？" class="headerlink" title="项目结构如何？"></a>项目结构如何？</h2><ul>
+<li>scaffold-business <a href="#">业务服务提供者</a> 端口从8850 - 8860<ul>
+<li>scaffold-business-sys-service <a href="#">系统业务微服务-业务模块</a> 端口 8850</li>
+<li>scaffold-business-job-service <a href="#">定时任务微服务-业务模块</a> 端口 8851</li>
+<li>scaffold-business-thirdparty-service <a href="#">第三方业务微服务-业务模块</a> 端口 8852</li>
+</ul>
+</li>
+<li>scaffold-business-api <a href="#">业务API包 用于接口与实现分离</a><ul>
+<li>scaffold-business-sys-api <a href="#">系统资源、菜单、权限等API封装</a></li>
+<li>scaffold-business-job-api <a href="#">定时任务API封装</a></li>
+<li>scaffold-business-thirdparty-api <a href="#">第三方服务API封装</a></li>
+</ul>
+</li>
+<li>scaffold-core <a href="#">工具类以及各种公共代码</a><ul>
+<li>scaffold-core-code <a href="#">每个模块都会用到的公共代码，Bean，config等</a></li>
+<li>scaffold-core-common <a href="#">工具类模块，公共代码</a></li>
+<li>scaffold-core-plugin <a href="#">自动代码生成插件模块</a></li>
+</ul>
+</li>
+<li>scaffold-eureka <a href="#">注册中心Eureka</a> 端口 8761 - 8771</li>
+<li>scaffold-zuul <a href="#">网关服务</a> 端口 8861 - 8870</li>
+<li>scaffold-config-server <a href="#">配置服务端服务</a> 端口 8871 - 8881</li>
+<li>scaffold-config-client <a href="#">配置客户端服务</a> 端口 8880 - 8891</li>
+<li>scaffold-tx-manager <a href="#">分布式事务协调服务</a> 端口7970 </li>
+<li>scaffold-feign <a href="#">Feign模块</a><ul>
+<li>scaffold-feign-sys <a href="#">feign-sys模块</a></li>
+<li>scaffold-feign-job <a href="#">feign-job模块</a></li>
+<li>scaffold-feign-thirdparty <a href="#">feign-thirdparty模块</a></li>
+</ul>
+</li>
+<li>scaffold-route <a href="#">主业务消费者</a> 端口从8750 - 8760<ul>
+<li>scaffold-route-operate <a href="#">后台管理接口及页面</a> 端口 8750</li>
+<li>scaffold-route-app <a href="#">APP客户端接口</a> 端口 8751</li>
+</ul>
+</li>
 </ul>
 <h2 id="如何快速开始？"><a href="#如何快速开始？" class="headerlink" title="如何快速开始？"></a>如何快速开始？</h2><h3 id="1-本地直接启动"><a href="#1-本地直接启动" class="headerlink" title="1. 本地直接启动"></a>1. 本地直接启动</h3><ul>
 <li><p>下载/克隆项目到本地 </p>
@@ -803,7 +966,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Cloud-介绍"><span class="nav-text">Spring Cloud 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从单体应用到微服务"><span class="nav-text">从单体应用到微服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringCloud"><span class="nav-text">SpringCloud</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringCloud-全家桶"><span class="nav-text">SpringCloud 全家桶</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建的目的？"><span class="nav-text">项目创建的目的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构如何？"><span class="nav-text">项目结构如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目已经集成了哪些功能？"><span class="nav-text">项目已经集成了哪些功能？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何快速开始？"><span class="nav-text">如何快速开始？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-本地直接启动"><span class="nav-text">1. 本地直接启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用-docker-部署"><span class="nav-text">2. 使用 docker 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-启动-Linux-或者-Mac-下使用如下脚本-Windows-环境自行按照脚本中的示例执行"><span class="nav-text">docker 启动 : Linux 或者 Mac 下使用如下脚本, Windows 环境自行按照脚本中的示例执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mvn-clean-package-docker-build-Pdocker"><span class="nav-text">mvn clean package docker:build -Pdocker</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目未来还需要做什么？"><span class="nav-text">项目未来还需要做什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Cloud-介绍"><span class="nav-text">Spring Cloud 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从单体应用到微服务"><span class="nav-text">从单体应用到微服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringCloud"><span class="nav-text">SpringCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SpringCloud特点："><span class="nav-text">SpringCloud特点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SpringCloud-各版本组件及版本兼容性"><span class="nav-text">SpringCloud 各版本组件及版本兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringCloud-全家桶"><span class="nav-text">SpringCloud 全家桶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-netflix"><span class="nav-text">spring-cloud-netflix</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#eureka-原理："><span class="nav-text">eureka 原理：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-openfeign"><span class="nav-text">spring-cloud-openfeign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-cloud-zuul-微服务网关"><span class="nav-text">spring-cloud-zuul 微服务网关</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建的目的？"><span class="nav-text">项目创建的目的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构如何？"><span class="nav-text">项目结构如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何快速开始？"><span class="nav-text">如何快速开始？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-本地直接启动"><span class="nav-text">1. 本地直接启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用-docker-部署"><span class="nav-text">2. 使用 docker 部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-启动-Linux-或者-Mac-下使用如下脚本-Windows-环境自行按照脚本中的示例执行"><span class="nav-text">docker 启动 : Linux 或者 Mac 下使用如下脚本, Windows 环境自行按照脚本中的示例执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mvn-clean-package-docker-build-Pdocker"><span class="nav-text">mvn clean package docker:build -Pdocker</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目未来还需要做什么？"><span class="nav-text">项目未来还需要做什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></li></div>
             
 
           </div>
@@ -846,7 +1009,7 @@
     
       <span class="post-meta-item-text">站点字数统计&#58;</span>
     
-    <span title="站点字数统计">50.6k</span>
+    <span title="站点字数统计">51.3k</span>
   
 </div>
 
