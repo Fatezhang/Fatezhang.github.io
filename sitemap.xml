@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhangjiaheng.cn/blog/20200111/AWS-EC2-study/</loc>
+    
+    <lastmod>2020-01-11T08:50:46.744Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhangjiaheng.cn/blog/20191217/%E8%A7%A3%E5%86%B3-ResuestBody%E4%B8%AD%E7%9A%84-JSON-%E8%87%AA%E5%8A%A8%E8%BD%AC%E5%8C%96%E9%9D%9E-boolean-%E4%B8%BA-boolean-%E5%80%BC/</loc>
     
     <lastmod>2019-12-17T06:44:08.492Z</lastmod>
@@ -58,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://zhangjiaheng.cn/categories/index.html</loc>
-    
-    <lastmod>2019-11-01T01:40:48.280Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zhangjiaheng.cn/message/index.html</loc>
     
     <lastmod>2019-11-01T01:40:48.280Z</lastmod>
@@ -73,6 +73,13 @@
   
   <url>
     <loc>http://zhangjiaheng.cn/tags/tags.html</loc>
+    
+    <lastmod>2019-11-01T01:40:48.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhangjiaheng.cn/categories/index.html</loc>
     
     <lastmod>2019-11-01T01:40:48.280Z</lastmod>
     

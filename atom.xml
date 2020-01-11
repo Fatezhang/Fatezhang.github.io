@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangjiaheng.cn/"/>
-  <updated>2019-12-17T06:44:08.492Z</updated>
+  <updated>2020-01-11T08:50:46.744Z</updated>
   <id>http://zhangjiaheng.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AWS EC2 Study</title>
+    <link href="http://zhangjiaheng.cn/blog/20200111/AWS-EC2-study/"/>
+    <id>http://zhangjiaheng.cn/blog/20200111/AWS-EC2-study/</id>
+    <published>2020-01-11T07:47:09.000Z</published>
+    <updated>2020-01-11T08:50:46.744Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/blog/20200111/AWS-EC2-study/ec2.jpg" alt="EC2"></p><p><a href="/ppt/ec2.html"><h2 align="center">点击阅读PPT</h2></a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/blog/20200111/AWS-EC2-study/ec2.jpg&quot; alt=&quot;EC2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/ppt/ec2.html&quot;&gt;&lt;h2 align=&quot;center&quot;&gt;点击阅读PPT&lt;/h2&gt;&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="AWS" scheme="http://zhangjiaheng.cn/categories/AWS/"/>
+    
+      <category term="EC2" scheme="http://zhangjiaheng.cn/categories/AWS/EC2/"/>
+    
+    
+      <category term="AWS" scheme="http://zhangjiaheng.cn/tags/AWS/"/>
+    
+      <category term="EC2" scheme="http://zhangjiaheng.cn/tags/EC2/"/>
+    
+      <category term="PPT" scheme="http://zhangjiaheng.cn/tags/PPT/"/>
+    
+  </entry>
   
   <entry>
     <title> 解决@ResuestBody中的 JSON 自动转化非 Boolean 为 Boolean 值</title>
@@ -66,11 +99,11 @@
       <category term="SpringCloud" scheme="http://zhangjiaheng.cn/categories/SpringCloud/"/>
     
     
-      <category term="springboot" scheme="http://zhangjiaheng.cn/tags/springboot/"/>
-    
       <category term="SpringCloud" scheme="http://zhangjiaheng.cn/tags/SpringCloud/"/>
     
       <category term="微服务" scheme="http://zhangjiaheng.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="springboot" scheme="http://zhangjiaheng.cn/tags/springboot/"/>
     
       <category term="spring" scheme="http://zhangjiaheng.cn/tags/spring/"/>
     
@@ -164,11 +197,11 @@
     
       <category term="并发编程" scheme="http://zhangjiaheng.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="线程池" scheme="http://zhangjiaheng.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
-    
       <category term="Fork/Join框架" scheme="http://zhangjiaheng.cn/tags/Fork-Join%E6%A1%86%E6%9E%B6/"/>
     
       <category term="ForkJoinPool" scheme="http://zhangjiaheng.cn/tags/ForkJoinPool/"/>
+    
+      <category term="线程池" scheme="http://zhangjiaheng.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     
   </entry>
   
@@ -449,9 +482,9 @@
     
       <category term="并发编程" scheme="http://zhangjiaheng.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
-      <category term="ThreadPoolExecutor" scheme="http://zhangjiaheng.cn/tags/ThreadPoolExecutor/"/>
-    
       <category term="线程池" scheme="http://zhangjiaheng.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+      <category term="ThreadPoolExecutor" scheme="http://zhangjiaheng.cn/tags/ThreadPoolExecutor/"/>
     
   </entry>
   
@@ -566,37 +599,6 @@
       <category term="SpringMVC" scheme="http://zhangjiaheng.cn/tags/SpringMVC/"/>
     
       <category term="Servlet" scheme="http://zhangjiaheng.cn/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>并发编程学习(二)：使用AQS编写可重入锁</title>
-    <link href="http://zhangjiaheng.cn/blog/20190525/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%BA%8C-%EF%BC%9A%E4%BD%BF%E7%94%A8AQS%E7%BC%96%E5%86%99%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81/"/>
-    <id>http://zhangjiaheng.cn/blog/20190525/并发编程学习-二-：使用AQS编写可重入锁/</id>
-    <published>2019-05-25T06:07:35.000Z</published>
-    <updated>2019-11-01T01:40:48.240Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/blog/20190525/并发编程学习-二-：使用AQS编写可重入锁/aqs.png" alt="AQS中文文档介绍"></p><div style="width:100%;text-align: center;"><a href="http://www.matools.com/api/java8" target="_blank" rel="noopener">AQS中文文档介绍</a></div><a id="more"></a><hr><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong> <a href="/blog/20190517/编写一个简易的可重入锁-一/">上一章</a> </strong> 我使用实现<code>Lock</code>接口的方式并结合<code>Synchronized</code>关键字实现了自己的可重入锁，学习并了解了可重入锁的原理机制。这一章我在学习了AQS之后结合AQS实现自己的显示可重入锁。</p><h3 id="什么是AQS"><a href="#什么是AQS" class="headerlink" title="什么是AQS"></a>什么是AQS</h3><p>如上所述，Java8中文文档中描述的，AQS即<code>AbstractQueuedSynchronizer</code>。它提供了一个框架，用于实现依赖先进先出（FIFO）等待队列的阻塞锁和相关同步器（信号量，事件等）。该类被设计为大多数类型的同步器的有用依据，这些同步器依赖于单个原子int值来表示状态。 子类必须定义改变此状态的受保护方法，以及根据该对象被获取或释放来定义该状态的含义。 给定这些，这个类中的其他方法执行所有排队和阻塞机制。 子类可以保持其他状态字段，但只以原子方式更新int使用方法操纵值getState() ， setState(int)和compareAndSetState(int, int)被跟踪相对于同步。<strong>子类应定义为非公共内部助手类，用于实现其封闭类的同步属性。 AbstractQueuedSynchronizer类不实现任何同步接口。 相反，它定义了一些方法，如acquireInterruptibly(int) ，可以通过具体的锁和相关同步器来调用适当履行其公共方法。</strong></p><p>其实AQS类是一个使用了模板方法模式的抽象框架类。它将核心实现封装在模板方法中，提供给程序员去实现具体的加锁和释放的机制，以便于实现一些特殊功能的锁，比如JDK提供的可重入锁和可重入读写锁等等。</p><h3 id="如何使用AQS"><a href="#如何使用AQS" class="headerlink" title="如何使用AQS"></a>如何使用AQS</h3><p><strong>AQS在使用的时候主要需要重写以下方法</strong></p><ul><li><code>isHeldExclusively()</code>：该线程是否正在独占资源。只有用到condition才需要去实现它。</li><li><code>tryAcquire(int)</code>：独占方式。尝试获取资源，成功则返回true，失败则返回false。</li><li><code>tryRelease(int)</code>：独占方式。尝试释放资源，成功则返回true，失败则返回false。</li><li><code>tryAcquireShared(int)</code>：共享方式。尝试获取资源。负数表示失败；0表示成功，但没有剩余可用资源；正数表示成功，且有剩余资源。</li><li><code>tryReleaseShared(int)</code>：共享方式。尝试释放资源，如果释放后允许唤醒后续等待结点返回true，否则返回false。</li></ul><h3 id="使用AQS实现自己的可重入独占非公平锁的伪代码如下"><a href="#使用AQS实现自己的可重入独占非公平锁的伪代码如下" class="headerlink" title="使用AQS实现自己的可重入独占非公平锁的伪代码如下"></a>使用AQS实现自己的可重入独占非公平锁的伪代码如下</h3><h4 id="加锁步骤伪代码"><a href="#加锁步骤伪代码" class="headerlink" title="加锁步骤伪代码"></a>加锁步骤伪代码</h4><p>线程调用<code>lock</code>方法加锁，直接调用<code>sync.acquire(1);</code>，具体实现在<code>tryAcquire</code></p><ul><li>首先线程进入想要获取锁</li><li>拿到当前线程的引用</li><li>判断加锁状态，如果是未加锁状态<ul><li>使用<code>compareAndSetState</code>自旋原子操作加锁</li><li>设置当前线程</li><li>返回true加锁成功</li></ul></li><li>如果是加锁状态<ul><li>判断是否是当前线程重入</li><li>如果是当前线程重入，state加1，并返回true加锁成功</li></ul></li><li>最后如果都不是就返回false加锁失败</li></ul><h4 id="释放锁步骤伪代码"><a href="#释放锁步骤伪代码" class="headerlink" title="释放锁步骤伪代码"></a>释放锁步骤伪代码</h4><p>线程调用<code>unLock</code>方法加锁，直接调用<code>sync.release(1);</code>，具体实现在<code>tryRelease</code></p><ul><li>首先线程进入方法想要释放锁</li><li>判断如果不是当前线程，就抛出异常</li><li>如果是当前线程，state就减1（arg一般为1），表示释放一次</li><li>当state释放到0时，设置拥有锁的线程为null，然后返回true</li></ul><p><strong>具体的代码实现如下</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> zhangjiaheng</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 使用AQS重写一个可重入锁</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyReentrantLockByAQS</span> <span class="keyword">implements</span> <span class="title">Lock</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Sync sync = <span class="keyword">new</span> Sync();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 内部类Sync ReentrantLock使用的内部抽象类 并派生两个子类实现两种(公平/非公平)锁</span></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Sync</span> <span class="keyword">extends</span> <span class="title">AbstractQueuedSynchronizer</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryAcquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">            Thread t = Thread.currentThread();</span><br><span class="line">            <span class="comment">// 如果第一个线程进来 可以拿到锁 则返回true</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果第二个线程进来 如果不等于当前线程 返回false 否则更新当前线程值</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> state = getState();</span><br><span class="line">            <span class="keyword">if</span> (state == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">while</span> (compareAndSetState(<span class="number">0</span>, <span class="number">1</span>)) &#123;</span><br><span class="line">                    setExclusiveOwnerThread(t);</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (t == getExclusiveOwnerThread()) &#123;</span><br><span class="line">                <span class="comment">// 当前线程再进来</span></span><br><span class="line">                setState(getState() + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">tryRelease</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 锁的获取和释放时一一对应的</span></span><br><span class="line">            <span class="comment">// 调用此方法的线程肯定是当前线程</span></span><br><span class="line">            <span class="keyword">if</span> (Thread.currentThread() != getExclusiveOwnerThread()) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> c = getState() - arg;</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="number">0</span>) &#123;</span><br><span class="line">                setExclusiveOwnerThread(<span class="keyword">null</span>);</span><br><span class="line">                flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            setState(c);</span><br><span class="line">            <span class="keyword">return</span> flag;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> newCondition();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.acquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lockInterruptibly</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        sync.acquireInterruptibly(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquire(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> time, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.tryAcquireNanos(<span class="number">1</span>, unit.toNanos(time));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        sync.release(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Condition <span class="title">newCondition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sync.newCondition();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/blog/20190525/并发编程学习-二-：使用AQS编写可重入锁/aqs.png&quot; alt=&quot;AQS中文文档介绍&quot;&gt;&lt;/p&gt;
-&lt;div style=&quot;width:100%;text-align: center;&quot;&gt;&lt;a href=&quot;http://www.matools.com/api/java8&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;AQS中文文档介绍&lt;/a&gt;&lt;/div&gt;
-    
-    </summary>
-    
-      <category term="Java基础" scheme="http://zhangjiaheng.cn/categories/Java%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="并发编程" scheme="http://zhangjiaheng.cn/categories/Java%E5%9F%BA%E7%A1%80/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java基础" scheme="http://zhangjiaheng.cn/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="并发编程" scheme="http://zhangjiaheng.cn/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="AQS" scheme="http://zhangjiaheng.cn/tags/AQS/"/>
-    
-      <category term="可重入锁" scheme="http://zhangjiaheng.cn/tags/%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81/"/>
     
   </entry>
   
