@@ -500,7 +500,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20200111/AWS-EC2-study/">
+    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20200129/Java-并发编程的一些总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈年风楼">
@@ -519,7 +519,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/20200111/AWS-EC2-study/" itemprop="url">AWS EC2 Study</a></h1>
+                <a class="post-title-link" href="/blog/20200129/Java-并发编程的一些总结/" itemprop="url">Java 并发编程的一些总结</a></h1>
         
 
         <div class="post-meta">
@@ -534,8 +534,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-11T15:47:09+08:00">
-                2020-01-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-29T22:06:28+08:00">
+                2020-01-29
               </time>
             
 
@@ -557,8 +557,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AWS/" itemprop="url" rel="index">
-                    <span itemprop="name">AWS</span>
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
                   </a>
                 </span>
 
@@ -568,8 +568,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AWS/EC2/" itemprop="url" rel="index">
-                    <span itemprop="name">EC2</span>
+                  <a href="/categories/Java基础/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
                   </a>
                 </span>
 
@@ -599,7 +599,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5 字
+                  189 字
                 </span>
               
 
@@ -638,10 +638,215 @@
       
         
           
-            <p><img src="/blog/20200111/AWS-EC2-study/ec2.jpg" alt="EC2"></p>
-<p><a href="/ppt/ec2.html"><h2 align="center">点击阅读PPT</h2></a></p>
+            <blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3></blockquote>
+<p>关于JAVA 并发编程的学习，我已零散的并不系统地积累了一些学习博客，如下：</p>
+<p><a href="http://localhost:4000/blog/20190517/编写一个简易的可重入锁-一/" target="_blank" rel="noopener">并发编程学习(一)：编写一个简易的可重入锁</a></p>
+<p><a href="http://localhost:4000/blog/20190525/并发编程学习-二-：使用AQS编写可重入锁/" target="_blank" rel="noopener">并发编程学习(二)：使用AQS编写可重入锁</a></p>
+<p><a href="http://localhost:4000/blog/20190602/并发编程学习-三-：CountDownLatch的实现原理及使用/" target="_blank" rel="noopener">并发编程学习(三)：CountDownLatch的实现原理及使用</a></p>
+<p><a href="http://localhost:4000/blog/20190617/并发编程学习-四-：理解ThreadPoolExecutor线程池/" target="_blank" rel="noopener">并发编程学习(四)：理解ThreadPoolExecutor线程池</a></p>
+<p><a href="http://localhost:4000/blog/20190623/并发编程学习-五-：Semaphore源码学习及使用案例/" target="_blank" rel="noopener">并发编程学习(五)：Semaphore源码学习及使用案例</a></p>
+<p><a href="http://localhost:4000/blog/20190701/并发编程学习-六-：Exchanger的学习及使用场景/" target="_blank" rel="noopener">并发编程学习(六)：Exchanger的学习及使用场景</a></p>
+<p><a href="http://localhost:4000/blog/20190814/并发编程学习-七-：Fork-Join框架原理及demo/" target="_blank" rel="noopener">并发编程学习(七)：Fork/Join框架原理及demo</a></p>
+<p><a href="http://localhost:4000/blog/20190716/Synchronized使用时一个不起眼的注意点/" target="_blank" rel="noopener">Synchronized使用时一个不起眼的注意点</a></p>
+<p>今天想要将这些知识串一串，加深一下记忆，毕竟经常不用也会忘掉。</p>
+<p>// TODO 完成博客</p>
 
           
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20200115/How-to-use-Junit5-to-test-you-java-application-elegantly/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈年风楼">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈年风楼 | 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/20200115/How-to-use-Junit5-to-test-you-java-application-elegantly/" itemprop="url">How to Use Junit5 to Test You Java Application Elegantly</a></h1>
+        
+
+        <div class="post-meta">
+
+	  
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-15T14:25:14+08:00">
+                2020-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类：</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Junit5/" itemprop="url" rel="index">
+                    <span itemprop="name">Junit5</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Junit5/Unit-Test/" itemprop="url" rel="index">
+                    <span itemprop="name">Unit Test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,086 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 align="center">Junit5 的一些实际开发中常用的功能【 TDD 向 】</h1>
+
+<p><a href="/ppt/junit-study.html"><h2 align="center">点击阅读PPT</h2></a></p>
+<p><img src="/blog/20200115/How-to-use-Junit5-to-test-you-java-application-elegantly/junit5.png" alt="Junit"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/20200115/How-to-use-Junit5-to-test-you-java-application-elegantly/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1035,198 +1240,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20191020/我项目中使用的分布式事务：LCN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈年风楼">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈年风楼 | 博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/20191020/我项目中使用的分布式事务：LCN/" itemprop="url">我项目中使用的分布式事务：LCN</a></h1>
-        
-
-        <div class="post-meta">
-
-	  
-
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T11:14:44+08:00">
-                2019-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类：</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式/分布式事务/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式事务</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3,374 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12 min
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/blog/20191020/我项目中使用的分布式事务：LCN/tx.png" alt="官网首页"></p>
-<center><a href="#more2">其他关于分布式事务的总结整理</a></center>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/blog/20191020/我项目中使用的分布式事务：LCN/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1279,7 +1292,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1301,7 +1314,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/tags.html">
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1422,7 +1435,7 @@
     
       <span class="post-meta-item-text">站点字数统计&#58;</span>
     
-    <span title="站点字数统计">54.0k</span>
+    <span title="站点字数统计">55.3k</span>
   
 </div>
 
