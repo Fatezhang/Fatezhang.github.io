@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Java 并发编程（一）</title>
+
+    <link href="https://cdn.bootcss.com/reveal.js/3.8.0/css/reveal.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/reveal.js/1.4.0/css/reset.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/reveal.js/3.8.0/css/theme/black.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/reveal.js/3.8.0/lib/css/monokai.css" rel="stylesheet">
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ?
+				'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/pdf.css' :
+				'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+			什么是线程？
+			CPU 如何去执行一个线程任务？
+		</section>
+		<section>
+			CPU缓存概念
+		</section>
+		<section>
+			什么是线程安全？
+		</section>
+		<section>
+			Java Memory Model
+		</section>
+		<section>
+			Happen-Before 原则
+		</section>
+		<section>
+			能够实现线程安全的相关的关键字和类
+		</section>
+		<section>
+			Synchronized 和 CAS？
+		</section>
+		<section>
+			编写线程安全的单例类
+		</section>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/reveal.js/3.8.0/js/reveal.js"></script>>
+
+<script>
+    Reveal.initialize({
+        dependencies: [
+            {src: 'https://cdn.bootcss.com/reveal.js/3.8.0/plugin/markdown/marked.js'},
+            {src: 'https://cdn.bootcss.com/reveal.js/3.7.0/plugin/markdown/markdown.js'},
+            {src: 'https://cdn.bootcss.com/reveal.js/3.8.0/plugin/notes/notes.js', async: true},
+            {src: 'https://cdn.bootcss.com/reveal.js/3.7.0/plugin/highlight/highlight.js', async: true}
+        ],
+        slideNumber: 'c/t',
+        transaction: 'concave',
+        width: 1280,
+        height: 1080,
+        markdown: {
+            smartypants: true
+        }
+    });
+</script>
+</body>
+</html>

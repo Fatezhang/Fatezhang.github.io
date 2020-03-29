@@ -14,8 +14,8 @@
 <p><a href="http://localhost:4000/blog/20190701/并发编程学习-六-：Exchanger的学习及使用场景/" target="_blank" rel="noopener">并发编程学习(六)：Exchanger的学习及使用场景</a></p>
 <p><a href="http://localhost:4000/blog/20190814/并发编程学习-七-：Fork-Join框架原理及demo/" target="_blank" rel="noopener">并发编程学习(七)：Fork/Join框架原理及demo</a></p>
 <p><a href="http://localhost:4000/blog/20190716/Synchronized使用时一个不起眼的注意点/" target="_blank" rel="noopener">Synchronized使用时一个不起眼的注意点</a></p>
-<p>今天想要将这些知识串一串，加深一下记忆，毕竟经常不用也会忘掉。</p>
-<p>// TODO 完成博客</p>
+<p>这篇博客，制作了一个 Slide，来针对 Java 并发编程做一些小小的总结：</p>
+<p><a href="/ppt/java-concurrent-knowledge.html">&gt; 点击查看 Slide</a></p>
 ]]></content>
       <categories>
         <category>Java基础</category>
