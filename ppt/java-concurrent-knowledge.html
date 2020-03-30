@@ -15,42 +15,86 @@
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = window.location.search.match(/print-pdf/gi) ?
-				'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/pdf.css' :
-				'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/paper.css';
+            'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/pdf.css' :
+            'https://cdn.bootcss.com/reveal.js/3.8.0/css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
 </head>
 <body>
 <div class="reveal">
     <div class="slides">
+        <section data-markdown>
+            # 如何编写一个线程安全的单例？
+            ![单身狗](images/dsg.jpg)
+        </section>
         <section>
-			什么是线程？
-			CPU 如何去执行一个线程任务？
-		</section>
-		<section>
-			CPU缓存概念
-		</section>
-		<section>
-			什么是线程安全？
-		</section>
-		<section>
-			Java Memory Model
-		</section>
-		<section>
-			Happen-Before 原则
-		</section>
-		<section>
-			能够实现线程安全的相关的关键字和类
-		</section>
-		<section>
-			Synchronized 和 CAS？
-		</section>
-		<section>
-			编写线程安全的单例类
-		</section>
+            <section data-markdown>
+                ## 什么是线程？
+            </section>
+            <section data-transition="zoom">
+                <p class="fragment fade-left">线程是操作系统进行运算调度的最小单位。包含在进程之中，属于进程中任务的实际运作单元。</p>
+                <p class="fragment fade-right">一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
+                <p class="fragment fade-left">线程的实现可以使用内核线程（操作系统内核调度）或用户线程（用户自行调度）或内核线程混合用户线程</p>
+                <p class="fragment fade-right">同一个进程中的多个线程，可以共享该进程所拥有的资源，以此可以实现线程中的相互通信</p>
+            </section>
+            <section data-markdown>
+                ## 多线程的好处？
+                ![海贼王 罗宾](images/luobin.jpg)
+            </section>
+            <section>
+                <p class="fragment fade-up">将等待计算机进行 I/O 操作（存储、通信）的时间节约出来去同时处理其他任务</p>
+                <p class="fragment fade-up"></p>
+                <p class="fragment fade-up"></p>
+                <p class="fragment fade-up"></p>
+                <p class="fragment fade-up"></p>
+                <p class="fragment fade-up"></p>
+            </section>
+        </section>
+        <section>
+            <section data-markdown>## 什么是线程安全？</section>
+            <section data-markdown>
+				```java
+					public void deleteInvitation(UUID actorId, UUID invitationId) {
+						var primaryTenant = getPrimaryTenant();
+
+						if (primaryTenant.hasSubmitted()) {
+						throw new InvitationException(
+						format("Deletion of invitation is not allow for submitted application: %s", this.id));
+						}
+
+						invitations.removeIf(invitation -> invitation.getId().equals(invitationId));
+					}
+				```
+            </section>
+        </section>
+        <section>
+            <section data-markdown>
+                ## CPU 如何去执行一个线程任务？
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Java 内存模型 -- Java Memory Model</h2>
+            </section>
+            <section data-transition="zoom">
+
+            </section>
+        </section>
+        <section>
+            Happen-Before 原则
+        </section>
+        <section>
+            能够实现线程安全的相关的关键字和类
+        </section>
+        <section>
+            Synchronized 和 CAS？
+        </section>
+        <section data-markdown>
+            [编写线程安全的单例类](/blog/20190607/深度分析如何写出一个线程安全的单例)
+        </section>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/reveal.js/3.8.0/js/reveal.js"></script>>
+<script src="https://cdn.bootcss.com/reveal.js/3.8.0/js/reveal.js"></script>
 
 <script>
     Reveal.initialize({
