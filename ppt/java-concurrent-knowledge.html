@@ -42,34 +42,44 @@
                 ![海贼王 罗宾](images/luobin.jpg)
             </section>
             <section>
+                <p class="fragment fade-up">多核多处理器的普及，使得计算机进行多任务处理成为一项必备技能</p>
+                <p class="fragment fade-up">计算机的运算能力远大于进行 I/O 操作，网络通信，数据库操作</p>
                 <p class="fragment fade-up">将等待计算机进行 I/O 操作（存储、通信）的时间节约出来去同时处理其他任务</p>
-                <p class="fragment fade-up"></p>
-                <p class="fragment fade-up"></p>
-                <p class="fragment fade-up"></p>
-                <p class="fragment fade-up"></p>
-                <p class="fragment fade-up"></p>
+                <p class="fragment fade-up">并行处理多个互不依赖的任务</p>
             </section>
         </section>
         <section>
             <section data-markdown>## 什么是线程安全？</section>
             <section data-markdown>
-				```java
-					public void deleteInvitation(UUID actorId, UUID invitationId) {
-						var primaryTenant = getPrimaryTenant();
+                <script type="text/template">
+                    ```java
+                    public class NumberMachine {
 
-						if (primaryTenant.hasSubmitted()) {
-						throw new InvitationException(
-						format("Deletion of invitation is not allow for submitted application: %s", this.id));
-						}
+                        private int number = 0;
 
-						invitations.removeIf(invitation -> invitation.getId().equals(invitationId));
-					}
-				```
+                        public int getNextNumber(){
+                            return number++;
+                        }
+                    }
+                    ```
+                    ![slt](images/dsg.jpg) <!-- .element: class="fragment" data-fragment-index="1" -->
+                </script>
             </section>
+            <section data-markdown>
+                ## 如何确保线程安全？
+            </section>
+<!--            <section>-->
+<!--                <p class="fragment fade-up">原子性</p>-->
+<!--                <p class="fragment fade-up">可见性</p>-->
+<!--                <p class="fragment fade-up">有序性</p>-->
+<!--            </section>-->
         </section>
         <section>
             <section data-markdown>
                 ## CPU 如何去执行一个线程任务？
+            </section>
+            <section data-markdown>
+
             </section>
         </section>
         <section>
@@ -102,10 +112,12 @@
             {src: 'https://cdn.bootcss.com/reveal.js/3.8.0/plugin/markdown/marked.js'},
             {src: 'https://cdn.bootcss.com/reveal.js/3.7.0/plugin/markdown/markdown.js'},
             {src: 'https://cdn.bootcss.com/reveal.js/3.8.0/plugin/notes/notes.js', async: true},
-            {src: 'https://cdn.bootcss.com/reveal.js/3.7.0/plugin/highlight/highlight.js', async: true}
+            {src: 'https://cdn.bootcss.com/reveal.js/3.7.0/plugin/highlight/highlight.js', async: true},
+            {src: "https://cdn.bootcss.com/reveal.js/3.8.0/plugin/highlight/highlight.min.js", async: true},
+            {src: "https://cdn.bootcss.com/reveal.js/3.8.0/plugin/zoom-js/zoom.min.js", async: true}
         ],
         slideNumber: 'c/t',
-        transaction: 'concave',
+        transaction: 'convex',
         width: 1280,
         height: 1080,
         markdown: {
