@@ -91,16 +91,41 @@
             </section>
         </section>
         <section>
-            Happen-Before 原则
+            <section><h2>能够实现线程安全的相关的关键字和类</h2></section>
+            <section data-markdown>
+                <script type="text/template">
+                    - synchronized <!-- .element: class="fragment" -->
+                    - final <!-- .element: class="fragment" -->
+                    - volatile <!-- .element: class="fragment" -->
+                    - CAS <!-- .element: class="fragment" -->
+                    - J.U.C 包 <!-- .element: class="fragment" -->
+                        - Lock <!-- .element: class="fragment" -->
+                        - ConcurrentHashMap <!-- .element: class="fragment" -->
+                        - ... <!-- .element: class="fragment" -->
+                    - ... <!-- .element: class="fragment" -->
+                </script>
+            </section>
         </section>
         <section>
-            能够实现线程安全的相关的关键字和类
-        </section>
-        <section>
-            Synchronized 和 CAS？
+            <section>
+                <h2>Happen-Before 原则</h2>
+            </section>
+            <section data-markdown>
+                - 程序次序原则：同一个线程内按照程序控制流顺序执行
+                - 管程锁定原则：加锁在解锁后执行
+                - volatile 原则：对于 volatile 变量的读操作必定发生在其写操作之后
+                - 线程启动原则：Thread 的 start() 方法必定发生在该线程执行其他代码之前
+                - 线程终止原则：线程终止检测必定发生在其他操作之后
+                - 线程中断原则：对线程的 interrupt() 方法先行发生于其中断检测
+                - 对象终结原则：对象的初始化完成先行发生于它的 finalize() 方法的开始
+                - 传递性：以上先行发生操作具有传递性
+            </section>
         </section>
         <section data-markdown>
-            [编写线程安全的单例类](/blog/20190607/深度分析如何写出一个线程安全的单例)
+            ## [编写线程安全的单例类](/blog/20190607/深度分析如何写出一个线程安全的单例)
+        </section>
+        <section>
+            使用 CountDownLatch 进行并发测试
         </section>
     </div>
 </div>
