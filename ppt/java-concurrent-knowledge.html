@@ -135,10 +135,23 @@
         </section>
         <section>
             <section data-markdown>
-                ## CPU 如何去执行一个线程任务？
+                ## 出现线程安全问题的本质原因
             </section>
             <section data-markdown>
+                <script type="text/template">
+                    ### 物理机中的并发问题
 
+                    实际上绝大多数的运算任务都不是简单地靠处理器的“计算”（在寄存器中）就能完成的。处理器至少要与内存交互，如读取运算数据、存储运算结果。
+                    这个 I/O 操作很难消除，而由于存储设备与处理器之间的运算速度有着数量级差距，所以现代计算机都会加一层高速缓存作为计算缓冲。
+                    但是这样也带来了缓存一致性问题。多处理器系统中，每个处理器都有自己的高速缓存，又使用同一个主内存，那么当多个处理器同时处理数据的时候，
+                    同步回主内存时以谁的数据为准？这个时候各个处理器都需要遵循一些协议（MSI, MESI, Dragon, Protocol等），在读写时根据协议来进行操作。<!-- .element: class="fragment" -->
+
+                    除了增加高速缓存之外，处理器会对输入代码进行重排序优化，并在计算之后将乱序结果充组保证该结果与顺序执行的结果是一致的。
+                    在 Java 虚拟机中也存在指令重排序。
+                </script>
+            </section>
+            <section data-markdown>
+                ![cpu](images/cpuncmx.png)
             </section>
         </section>
         <section>
@@ -146,7 +159,10 @@
                 <h2>Java 内存模型 -- Java Memory Model</h2>
             </section>
             <section data-transition="zoom">
-
+                <p class="fragment fade-up"><img alt="Java 内存结构" src="images/javancjg.png"/></p>
+            </section>
+            <section>
+                <p class="fragment fade-up"><img src="images/javancmx.png"/></p>
             </section>
         </section>
         <section>
