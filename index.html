@@ -500,6 +500,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20201011/使用-Git-进行-Squash-commit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈年风楼">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈年风楼 | 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/20201011/使用-Git-进行-Squash-commit/" itemprop="url">使用 Git 进行 Squash Commit</a></h1>
+        
+
+        <div class="post-meta">
+
+	  
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-11T22:37:07+08:00">
+                2020-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类：</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  345 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="Git-更改-commit-的操作"><a href="#Git-更改-commit-的操作" class="headerlink" title="Git 更改 commit 的操作"></a>Git 更改 commit 的操作</h2><ol>
+<li><p><code>git rebase -i HEAD~&lt;number 代表需要处理几个 commit&gt;</code></p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Rebase ddebba2..a54dc28 onto 9d9ba60 (15 commands)</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Commands:</span><br><span class="line"><span class="meta">#</span> p, pick &lt;commit&gt; = use commit</span><br><span class="line"><span class="meta">#</span> r, reword &lt;commit&gt; = use commit, but edit the commit message</span><br><span class="line"><span class="meta">#</span> e, edit &lt;commit&gt; = use commit, but stop for amending</span><br><span class="line"><span class="meta">#</span> s, squash &lt;commit&gt; = use commit, but meld into previous commit</span><br><span class="line"><span class="meta">#</span> f, fixup &lt;commit&gt; = like "squash", but discard this commit's log message</span><br><span class="line"><span class="meta">#</span> x, exec &lt;command&gt; = run command (the rest of the line) using shell</span><br><span class="line"><span class="meta">#</span> b, break = stop here (continue rebase later with 'git rebase --continue')</span><br><span class="line"><span class="meta">#</span> d, drop &lt;commit&gt; = remove commit</span><br><span class="line"><span class="meta">#</span> l, label &lt;label&gt; = label current HEAD with a name</span><br><span class="line"><span class="meta">#</span> t, reset &lt;label&gt; = reset HEAD to a label</span><br><span class="line"><span class="meta">#</span> m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span><br><span class="line"><span class="meta">#</span> .       create a merge commit using the original merge commit's</span><br><span class="line"><span class="meta">#</span> .       message (or the oneline, if no original merge commit was</span><br><span class="line"><span class="meta">#</span> .       specified). Use -c &lt;commit&gt; to reword the commit message.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> However, if you remove everything, the rebase will be aborted.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据上面每一个指令操作，更改以下类似内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">pick 3a33ad2 Update README.md</span><br><span class="line">pick 225a513 Update README.md</span><br><span class="line">pick d44d34b Update README.md</span><br><span class="line">pick 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">squash 3a33ad2 Update README.md</span><br><span class="line">squash 225a513 Update README.md</span><br><span class="line">squash d44d34b Update README.md</span><br><span class="line">squash 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样就可以把最上面两个 Message 保留，把后面的 Message 去掉</p>
+</li>
+<li><p>最后<code>git push --force</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20200705/Make-everything-interrupted-reboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1060,186 +1250,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20191217/解决-ResuestBody中的-JSON-自动转化非-boolean-为-boolean-值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈年风楼">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈年风楼 | 博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/20191217/解决-ResuestBody中的-JSON-自动转化非-boolean-为-boolean-值/" itemprop="url"> 解决@ResuestBody中的 JSON 自动转化非 Boolean 为 Boolean 值</a></h1>
-        
-
-        <div class="post-meta">
-
-	  
-
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-17T11:39:58+08:00">
-                2019-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类：</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,021 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 min
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/blog/20191217/解决-ResuestBody中的-JSON-自动转化非-boolean-为-boolean-值/code.jpg" alt="封面"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/blog/20191217/解决-ResuestBody中的-JSON-自动转化非-boolean-为-boolean-值/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1292,7 +1302,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1303,7 +1313,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1314,7 +1324,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/tags.html">
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1435,7 +1445,7 @@
     
       <span class="post-meta-item-text">站点字数统计&#58;</span>
     
-    <span title="站点字数统计">56.3k</span>
+    <span title="站点字数统计">56.7k</span>
   
 </div>
 
