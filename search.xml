@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用 Git 进行 Squash Commit</title>
-    <url>/blog/20201011/%E4%BD%BF%E7%94%A8-Git-%E8%BF%9B%E8%A1%8C-Squash-commit/</url>
-    <content><![CDATA[<hr>
-<h2 id="Git-更改-commit-的操作"><a href="#Git-更改-commit-的操作" class="headerlink" title="Git 更改 commit 的操作"></a>Git 更改 commit 的操作</h2><ol>
-<li><p><code>git rebase -i HEAD~&lt;number 代表需要处理几个 commit&gt;</code></p>
-</li>
-<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> Rebase ddebba2..a54dc28 onto 9d9ba60 (15 commands)</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Commands:</span><br><span class="line"><span class="meta">#</span> p, pick &lt;commit&gt; = use commit</span><br><span class="line"><span class="meta">#</span> r, reword &lt;commit&gt; = use commit, but edit the commit message</span><br><span class="line"><span class="meta">#</span> e, edit &lt;commit&gt; = use commit, but stop for amending</span><br><span class="line"><span class="meta">#</span> s, squash &lt;commit&gt; = use commit, but meld into previous commit</span><br><span class="line"><span class="meta">#</span> f, fixup &lt;commit&gt; = like "squash", but discard this commit's log message</span><br><span class="line"><span class="meta">#</span> x, exec &lt;command&gt; = run command (the rest of the line) using shell</span><br><span class="line"><span class="meta">#</span> b, break = stop here (continue rebase later with 'git rebase --continue')</span><br><span class="line"><span class="meta">#</span> d, drop &lt;commit&gt; = remove commit</span><br><span class="line"><span class="meta">#</span> l, label &lt;label&gt; = label current HEAD with a name</span><br><span class="line"><span class="meta">#</span> t, reset &lt;label&gt; = reset HEAD to a label</span><br><span class="line"><span class="meta">#</span> m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span><br><span class="line"><span class="meta">#</span> .       create a merge commit using the original merge commit's</span><br><span class="line"><span class="meta">#</span> .       message (or the oneline, if no original merge commit was</span><br><span class="line"><span class="meta">#</span> .       specified). Use -c &lt;commit&gt; to reword the commit message.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> However, if you remove everything, the rebase will be aborted.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根据上面每一个指令操作，更改以下类似内容：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">pick 3a33ad2 Update README.md</span><br><span class="line">pick 225a513 Update README.md</span><br><span class="line">pick d44d34b Update README.md</span><br><span class="line">pick 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">squash 3a33ad2 Update README.md</span><br><span class="line">squash 225a513 Update README.md</span><br><span class="line">squash d44d34b Update README.md</span><br><span class="line">squash 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这样就可以把最上面两个 Message 保留，把后面的 Message 去掉</p>
-</li>
-<li><p>最后<code>git push --force</code></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>开发工具</tag>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>让一切被中断的重新启动</title>
     <url>/blog/20200705/Make-everything-interrupted-reboot/</url>
     <content><![CDATA[<p> <img src="/blog/20200705/Make-everything-interrupted-reboot/flag.JPG" alt></p>
@@ -1950,6 +1923,33 @@
         <tag>开发日记</tag>
         <tag>工作技巧</tag>
         <tag>nodepad++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用 Git 进行 Squash Commit</title>
+    <url>/blog/20181011/%E4%BD%BF%E7%94%A8-Git-%E8%BF%9B%E8%A1%8C-Squash-commit/</url>
+    <content><![CDATA[<hr>
+<h2 id="Git-更改-commit-的操作"><a href="#Git-更改-commit-的操作" class="headerlink" title="Git 更改 commit 的操作"></a>Git 更改 commit 的操作</h2><ol>
+<li><p><code>git rebase -i HEAD~&lt;number 代表需要处理几个 commit&gt;</code></p>
+</li>
+<li><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span> Rebase ddebba2..a54dc28 onto 9d9ba60 (15 commands)</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Commands:</span><br><span class="line"><span class="meta">#</span> p, pick &lt;commit&gt; = use commit</span><br><span class="line"><span class="meta">#</span> r, reword &lt;commit&gt; = use commit, but edit the commit message</span><br><span class="line"><span class="meta">#</span> e, edit &lt;commit&gt; = use commit, but stop for amending</span><br><span class="line"><span class="meta">#</span> s, squash &lt;commit&gt; = use commit, but meld into previous commit</span><br><span class="line"><span class="meta">#</span> f, fixup &lt;commit&gt; = like "squash", but discard this commit's log message</span><br><span class="line"><span class="meta">#</span> x, exec &lt;command&gt; = run command (the rest of the line) using shell</span><br><span class="line"><span class="meta">#</span> b, break = stop here (continue rebase later with 'git rebase --continue')</span><br><span class="line"><span class="meta">#</span> d, drop &lt;commit&gt; = remove commit</span><br><span class="line"><span class="meta">#</span> l, label &lt;label&gt; = label current HEAD with a name</span><br><span class="line"><span class="meta">#</span> t, reset &lt;label&gt; = reset HEAD to a label</span><br><span class="line"><span class="meta">#</span> m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span><br><span class="line"><span class="meta">#</span> .       create a merge commit using the original merge commit's</span><br><span class="line"><span class="meta">#</span> .       message (or the oneline, if no original merge commit was</span><br><span class="line"><span class="meta">#</span> .       specified). Use -c &lt;commit&gt; to reword the commit message.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> However, if you remove everything, the rebase will be aborted.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据上面每一个指令操作，更改以下类似内容：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">pick 3a33ad2 Update README.md</span><br><span class="line">pick 225a513 Update README.md</span><br><span class="line">pick d44d34b Update README.md</span><br><span class="line">pick 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">squash 3a33ad2 Update README.md</span><br><span class="line">squash 225a513 Update README.md</span><br><span class="line">squash d44d34b Update README.md</span><br><span class="line">squash 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样就可以把最上面两个 Message 保留，把后面的 Message 去掉</p>
+</li>
+<li><p>最后<code>git push --force</code></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>开发工具</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
