@@ -455,6 +455,9 @@ body {
 .main {
   padding-bottom: 150px;
 }
+.post-body a {
+  color: #800000;
+}
 .main-inner {
   margin: 0 auto;
   width: 700px;
@@ -2056,7 +2059,7 @@ pre .javascript .function {
   -webkit-border-radius: 80px;
   -moz-border-radius: 80px;
   box-shadow: inset 0 -1px 0 #333 sf;
-/* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束
+/* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 
     (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/
 /* 鼠标经过头像旋转360度 */
   -webkit-transition: -webkit-transform 1s ease-out;
@@ -2064,7 +2067,7 @@ pre .javascript .function {
   transition: transform 1s ease-out;
 }
 img:hover {
-/* 鼠标经过停止头像旋转
+/* 鼠标经过停止头像旋转 
   -webkit-animation-play-state:paused;
   animation-play-state:paused;*/
 /* 鼠标经过头像旋转360度 */
@@ -2224,7 +2227,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0bd637;
+  background: #fffffb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3007,9 +3010,6 @@ hr {
 }
 .main-inner {
   margin-top: 80px;
-}
-.header {
-  /*background: url("../images/tx.jpg");*/
 }
 .header-inner {
   padding: 25px 0 20px;
