@@ -180,15 +180,15 @@ th {
   padding: 0;
 }
 ::selection {
-  background: #262a30;
-  color: #fff;
+  background: #f90;
+  color: #000;
 }
 body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
-  color: #555;
+  color: #f90;
   background: #fff;
 }
 @media (max-width: 767px) {
@@ -277,15 +277,15 @@ p {
   margin: 0 0 20px 0;
 }
 a {
-  color: #555;
+  color: #f90;
   text-decoration: none;
   outline: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
 }
 a:hover {
-  color: #222;
-  border-bottom-color: #222;
+  color: #f90;
+  border-bottom-color: #f90;
 }
 blockquote {
   margin: 0;
@@ -456,7 +456,7 @@ body {
   padding-bottom: 150px;
 }
 .post-body a {
-  color: #800000;
+  color: #f90;
 }
 .main-inner {
   margin: 0 auto;
@@ -501,7 +501,7 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #555;
+  color: #f90;
   background: #eee;
   border-radius: 3px;
   font-size: 13px;
@@ -585,7 +585,7 @@ pre .deletion {
   background: #008000;
 }
 pre .addition {
-  background: #800000;
+  background: #f90;
 }
 pre .meta {
   color: #c9c;
@@ -924,7 +924,7 @@ pre .javascript .function {
 }
 .post-body .tabs ul.nav-tabs li.tab.active a {
   cursor: default;
-  color: #555;
+  color: #f90;
 }
 .post-body .tabs .tab-content {
   background-color: #fff;
@@ -993,9 +993,9 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 20px;
   font-size: 14px;
-  color: #555;
+  color: #f90;
   background: transparent;
-  border: 2px solid #222;
+  border: 2px solid #f90;
   text-decoration: none;
   border-radius: 0;
   transition-property: background-color;
@@ -1005,8 +1005,8 @@ pre .javascript .function {
   line-height: 2;
 }
 .btn:hover {
-  border-color: #222;
-  color: #222;
+  border-color: #f90;
+  color: #f90;
   background: #fff;
 }
 .btn +.btn {
@@ -1020,7 +1020,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: #555;
+  background: #f90;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -1029,7 +1029,6 @@ pre .javascript .function {
 .pagination {
   margin: 120px 0 40px;
   text-align: center;
-  border-top: 1px solid #eee;
 }
 .page-number-basic,
 .pagination .prev,
@@ -1054,8 +1053,6 @@ pre .javascript .function {
 .pagination .prev,
 .pagination .next,
 .pagination .page-number {
-  border-bottom: 0;
-  border-top: 1px solid #eee;
   transition-property: border-color;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -1064,7 +1061,7 @@ pre .javascript .function {
 .pagination .prev:hover,
 .pagination .next:hover,
 .pagination .page-number:hover {
-  border-top-color: #222;
+  border-top-color: #f90;
 }
 .pagination .space {
   padding: 0;
@@ -1077,9 +1074,9 @@ pre .javascript .function {
   margin-right: 0;
 }
 .pagination .page-number.current {
-  color: #fff;
-  background: #ccc;
-  border-top-color: #ccc;
+  color: #000;
+  background: #f90;
+  border-top-color: #fff;
 }
 @media (max-width: 767px) {
   .pagination {
@@ -1090,13 +1087,12 @@ pre .javascript .function {
   .pagination .page-number {
     margin-bottom: 10px;
     border-top: 0;
-    border-bottom: 1px solid #eee;
     padding: 0 10px;
   }
   .pagination .prev:hover,
   .pagination .next:hover,
   .pagination .page-number:hover {
-    border-bottom-color: #222;
+    border-bottom-color: #f90;
   }
 }
 .comments {
@@ -1107,7 +1103,7 @@ pre .javascript .function {
 }
 .tag-cloud a {
   display: inline-block;
-  margin: 10px;
+  margin: 20px;
 }
 .back-to-top {
   display: none;
@@ -1146,7 +1142,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #222;
+  background: #f90;
 }
 .site-meta {
   margin: 0;
@@ -1161,12 +1157,12 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #222;
-  background: #222;
+  color: #f90;
+  background: #f90;
   border-bottom: none;
 }
 .brand:hover {
-  color: #222;
+  color: #f90;
 }
 .logo {
   display: inline-block;
@@ -1259,7 +1255,8 @@ pre .javascript .function {
   transition-delay: 0s;
 }
 .menu .menu-item a:hover {
-  border-bottom-color: #222;
+  border-bottom-color: #f90;
+  color: #000;
 }
 .menu .menu-item .fa {
   margin-right: 5px;
@@ -1486,7 +1483,7 @@ pre .javascript .function {
   border-bottom-color: #666;
 }
 .posts-collapse .post-header:hover::before {
-  background: #222;
+  background: #f90;
 }
 .posts-collapse .post-meta {
   position: absolute;
@@ -1525,7 +1522,7 @@ pre .javascript .function {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #555;
+  color: #f90;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1714,7 +1711,7 @@ pre .javascript .function {
   border-bottom-color: #666;
 }
 .posts-collapse .post-header:hover::before {
-  background: #222;
+  background: #f90;
 }
 .posts-collapse .post-meta {
   position: absolute;
@@ -1753,7 +1750,7 @@ pre .javascript .function {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #555;
+  color: #f90;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1870,11 +1867,11 @@ pre .javascript .function {
   display: block;
   line-height: 25px;
   font-size: 14px;
-  color: #555;
+  color: #f90;
   border-bottom: none;
 }
 .post-nav-item a:hover {
-  color: #222;
+  color: #f90;
   border-bottom: none;
 }
 .post-nav-item a:active {
@@ -1958,16 +1955,14 @@ pre .javascript .function {
   bottom: 0;
   width: 0;
   z-index: 1040;
-  box-shadow: inset 0px 0px 20px 11px rgba(192,205,212,0.49);
-  background: rgba(213,210,209,0.31);
   -webkit-transform: translateZ(0);
 }
 .sidebar a {
-  color: rgba(130,111,15,0.812);
-  border-bottom-color: #555;
+  color: #f90;
+  border-bottom-color: rgba(130,111,15,0.812);
 }
 .sidebar a:hover {
-  color: #eee;
+  color: #f90;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .sidebar {
@@ -2033,19 +2028,18 @@ pre .javascript .function {
   padding: 2px;
   max-width: 96px;
   height: auto;
-  border: 2px solid #333;
 }
 .site-author-name {
   margin: 5px 0 0;
   text-align: center;
   color: #f5f5f5;
-  font-weight: normal;
+  font-weight: bold;
 }
 .site-description {
   margin-top: 5px;
   text-align: center;
   font-size: 14px;
-  color: rgba(63,86,88,0.8);
+  color: #ccc;
 }
 .site-author-image {
   display: block;
@@ -2053,13 +2047,8 @@ pre .javascript .function {
   padding: 2px;
   max-width: 96px;
   height: auto;
-  border: 2px solid #333;
 /* 头像圆形 */
-  border-radius: 80px;
-  -webkit-border-radius: 80px;
-  -moz-border-radius: 80px;
-  box-shadow: inset 0 -1px 0 #333 sf;
-/* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 
+/* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束
     (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/
 /* 鼠标经过头像旋转360度 */
   -webkit-transition: -webkit-transform 1s ease-out;
@@ -2067,7 +2056,7 @@ pre .javascript .function {
   transition: transform 1s ease-out;
 }
 img:hover {
-/* 鼠标经过停止头像旋转 
+/* 鼠标经过停止头像旋转
   -webkit-animation-play-state:paused;
   animation-play-state:paused;*/
 /* 鼠标经过头像旋转360度 */
@@ -2216,7 +2205,7 @@ img:hover {
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-bottom-color: #555;
+  border-bottom-color: #f90;
   font-size: 13px;
 }
 .links-of-author a:before {
@@ -2227,7 +2216,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #dddb39;
+  background: #73a700;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2262,7 +2251,7 @@ img:hover {
   cursor: pointer;
   border-bottom: 1px solid transparent;
   font-size: 14px;
-  color: #555;
+  color: #f90;
 }
 .sidebar-nav li:hover {
   color: #f5f5f5;
@@ -2312,7 +2301,7 @@ img:hover {
   transition-delay: 0s;
   transition-property: all;
   color: #999;
-  border-bottom-color: #555;
+  border-bottom-color: #f90;
 }
 .post-toc ol a:hover {
   color: #ccc;
@@ -2767,6 +2756,29 @@ img:hover {
   content: "|";
   padding-left: 10px;
 }
+#needsharebutton-postbottom {
+  position: relative;
+  cursor: pointer;
+  height: 26px;
+}
+#needsharebutton-postbottom .btn {
+  display: initial;
+  padding: 1px 4px;
+  border: 1px solid #f90;
+  border-radius: 3px;
+}
+#needsharebutton-float {
+  position: fixed;
+  bottom: 38px;
+  left: -8px;
+  z-index: 9999;
+  cursor: pointer;
+}
+#needsharebutton-float .btn {
+  padding: 0 10px 0 14px;
+  border: 1px solid #f90;
+  border-radius: 4px;
+}
 .page-archive .archive-page-counter {
   position: relative;
   top: 3px;
@@ -2785,7 +2797,7 @@ img:hover {
   width: 10px;
   height: 10px;
   opacity: 0.5;
-  background: #555;
+  background: #f90;
   border: 1px solid #fff;
   border-radius: 50%;
 }
@@ -3078,7 +3090,7 @@ hr {
   position: relative;
   display: block;
   height: 2px;
-  background: #222;
+  background: #f90;
 }
 @media (max-width: 767px) {
   .logo-line-before i,
@@ -3133,7 +3145,8 @@ hr {
   }
 }
 .menu .menu-item a:hover {
-  background: #e1e1e1;
+  background: #f90;
+  color: #000;
 }
 .menu a::before {
   display: none;
@@ -3193,7 +3206,7 @@ hr {
   }
 }
 .posts-expand .post-title:hover:before {
-  background: #222;
+  background: #f90;
 }
 @media (max-width: 767px) {
   .posts-expand .post-body {
@@ -3208,7 +3221,8 @@ hr {
 }
 .posts-expand .post-tags a {
   padding: 1px 5px;
-  background: #f5f5f5;
+  background: #f90;
+  color: #000;
   border-bottom: none;
 }
 .posts-expand .post-tags a:hover {
@@ -3240,7 +3254,7 @@ hr {
   }
 }
 .post-button a:hover {
-  border-bottom-color: #222;
+  border-bottom-color: #f90;
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
@@ -3293,9 +3307,8 @@ hr {
 .footer {
   margin-top: 80px;
   padding: 10px 0;
-  background: rgba(173,179,177,0.122);
-  color: #121621;
-  box-shadow: inset 1px 1px 8px 3px #e1ddda;
+  color: #f90;
+  background-color: #222;
 }
 .footer-inner {
   margin: 0 auto;
@@ -3307,19 +3320,21 @@ hr {
     text-align: center;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 750px) {
   body {
-    background-image: url("/images/bg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 100% 100%;
+    background-color: #000;
+    color: #fff;
   }
   code {
-    background: rgba(145,166,35,0.302);
+    background: #f90;
+    color: #000;
   }
   blockquote {
-    border-left: 4px solid #20c696;
+    border-left: 4px solid #f90;
   }
   #footer a {
     color: #eee;
@@ -3327,10 +3342,11 @@ hr {
 }
 @media (max-width: 767px) {
   body {
-    background-image: url("/images/mbbg.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
     background-size: 100% 100%;
+    background-color: #000;
+    color: #fff;
   }
 }

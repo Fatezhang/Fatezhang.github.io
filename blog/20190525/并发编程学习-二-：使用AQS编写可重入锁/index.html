@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Java基础,并发编程,AQS,可重入锁,">
+  <meta name="keywords" content="Java基础,并发编程,可重入锁,AQS,">
 
 
 
@@ -86,7 +86,7 @@
 
 
 <meta name="description" content="AQS中文文档介绍">
-<meta name="keywords" content="Java基础,并发编程,AQS,可重入锁">
+<meta name="keywords" content="Java基础,并发编程,可重入锁,AQS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="并发编程学习(二)：使用AQS编写可重入锁">
 <meta property="og:url" content="http://zhangjiaheng.cn/blog/20190525/并发编程学习-二-：使用AQS编写可重入锁/index.html">
@@ -320,7 +320,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈年风楼">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/tx.jpg">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -507,7 +507,7 @@
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
     <img id="wechat_subscriber_qcode" src="/images/wx.jpg" alt="陈年风楼 wechat" style="width: 200px; max-width: 100%;">
-    <div>本不想放微信的，如果有转账的需求，请加我好友～哈哈</div>
+    <div>Add my WeChat, share tech-skills to each other 🙆‍</div>
 </div>
 
       </div>
@@ -525,9 +525,9 @@
           
             <a href="/tags/并发编程/" rel="tag"><i class="fa fa-tag"></i> 并发编程</a>
           
-            <a href="/tags/AQS/" rel="tag"><i class="fa fa-tag"></i> AQS</a>
-          
             <a href="/tags/可重入锁/" rel="tag"><i class="fa fa-tag"></i> 可重入锁</a>
+          
+            <a href="/tags/AQS/" rel="tag"><i class="fa fa-tag"></i> AQS</a>
           
         </div>
       
@@ -620,11 +620,6 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzcwOS8xNDI0MA=="></div>
-    </div>
-
-  
 
 
 
@@ -661,7 +656,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/tx.jpg" alt="陈年风楼">
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png" alt="陈年风楼">
             
               <p class="site-author-name" itemprop="name">陈年风楼</p>
               <p class="site-description motion-element" itemprop="description">真正的大师永远都怀着一颗学徒的心！</p>
@@ -892,6 +887,12 @@
     
 
     
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
 
   </div>
 
@@ -1007,17 +1008,6 @@
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 
@@ -1376,6 +1366,31 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "vertical";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   
