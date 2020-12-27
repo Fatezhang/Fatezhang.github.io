@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+<script type="text/javascript" color="248,248,255" opacity="0.7" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AWS,localstack,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="陈年风楼 | 博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前言相信有很多同学公司项目都有用到 AWS 或者有同学在学习 AWS，我们知道像 AWS 这样的云服务，我们不太能很方便的去在本地开发的时候连接云上的服务，更何况 staging/production 环境还会有安全方面的考虑。那么当我们创建好一个项目的时候，我们如何去搭建其本地开发环境方便我们在本地开发调试呢？没错！使用 localstack！ LocalStack - A fully fun">
+<meta name="keywords" content="AWS,localstack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Localstack 搭建 AWS 本地开发环境">
+<meta property="og:url" content="http://zhangjiaheng.cn/blog/20201227/使用localstack-搭建-AWS-本地开发环境/index.html">
+<meta property="og:site_name" content="陈年风楼 | 博客">
+<meta property="og:description" content="前言相信有很多同学公司项目都有用到 AWS 或者有同学在学习 AWS，我们知道像 AWS 这样的云服务，我们不太能很方便的去在本地开发的时候连接云上的服务，更何况 staging/production 环境还会有安全方面的考虑。那么当我们创建好一个项目的时候，我们如何去搭建其本地开发环境方便我们在本地开发调试呢？没错！使用 localstack！ LocalStack - A fully fun">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/DBhQX3.jpg">
+<meta property="og:updated_time" content="2020-12-27T09:45:48.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Localstack 搭建 AWS 本地开发环境">
+<meta name="twitter:description" content="前言相信有很多同学公司项目都有用到 AWS 或者有同学在学习 AWS，我们知道像 AWS 这样的云服务，我们不太能很方便的去在本地开发的时候连接云上的服务，更何况 staging/production 环境还会有安全方面的考虑。那么当我们创建好一个项目的时候，我们如何去搭建其本地开发环境方便我们在本地开发调试呢？没错！使用 localstack！ LocalStack - A fully fun">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/DBhQX3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangjiaheng.cn/blog/20201227/使用localstack-搭建-AWS-本地开发环境/">
+
+
+
+
+
+  <title>使用Localstack 搭建 AWS 本地开发环境 | 陈年风楼 | 博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e44eb2ecb3cbca508790ceb92aa7acc4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+    <a id="fork-me-custom" href="https://github.com/Fatezhang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">陈年风楼 | 博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">当你看到了一座山，一定会想再看看山的后面是什么！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            短诗的序
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            迷途自渡
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/tags.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            寒星三两
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            林深见鹿
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            记昨日书
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            顾探往昔
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="顾探往昔，搜寻往日记忆..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20201227/使用localstack-搭建-AWS-本地开发环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈年风楼">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈年风楼 | 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Localstack 搭建 AWS 本地开发环境</h1>
+        
+
+        <div class="post-meta">
+
+	  
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-27T14:45:59+08:00">
+                2020-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类：</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AWS/" itemprop="url" rel="index">
+                    <span itemprop="name">AWS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次阅读
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,399 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/DBhQX3.jpg" alt="DBhQX3"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>相信有很多同学公司项目都有用到 AWS 或者有同学在学习 AWS，我们知道像 AWS 这样的云服务，我们不太能很方便的去在本地开发的时候连接云上的服务，更何况 staging/production 环境还会有安全方面的考虑。那么当我们创建好一个项目的时候，我们如何去搭建其本地开发环境方便我们在本地开发调试呢？没错！使用 localstack！</p>
+<p><strong><a href="https://github.com/localstack/localstack" target="_blank" rel="noopener">LocalStack - A fully functional local AWS cloud stack</a></strong></p>
+<blockquote>
+<p><strong><em>LocalStack provides an easy-to-use test/mocking framework for developing Cloud applications.</em></strong></p>
+<p><strong><em>Currently, the focus is primarily on supporting the AWS cloud stack.</em></strong></p>
+</blockquote>
+<p>LocalStack 是提供给开发者一个方便去测试和 mock 服务的框架， 目前主要提供 AWS 云服务。</p>
+<a id="more"></a>
+<h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><h3 id="例：使用-LocalStack-创建一个-SNS服务"><a href="#例：使用-LocalStack-创建一个-SNS服务" class="headerlink" title="例：使用 LocalStack 创建一个 SNS服务"></a>例：使用 LocalStack 创建一个 SNS服务</h3><p>想像我们有这样一个 SpringBoot 服务，提供接口在用户提交一条记录的时候给用户发邮件，一般情况这种业务我们都会将保存数据库和发邮件异步执行。使用 AWS 的话，我们就可以在保存数据库之后调用 SNS 服务，发布一个 <code>Event</code> 然后等待下游邮件服务订阅对应的 topic 然后消费。</p>
+<p>那么如何创建呢？如下在 <code>docker-compose.yml</code> 文件中加入<code>localstack</code>，SERVICES 指定好 <code>sns</code>：</p>
+<h4 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.7"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">localstack:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">localstack/localstack:0.12.1</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app_net</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"4566:4566"</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">SERVICES=sns</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEFAULT_REGION=ap-southeast-2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEBUG=1</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./auto/create-localstack-topic:/docker-entrypoint-initaws.d/create-localstack-topic.sh</span></span><br></pre></td></tr></table></figure>
+<h4 id="create-localstack-topic-sh"><a href="#create-localstack-topic-sh" class="headerlink" title="create-localstack-topic.sh"></a>create-localstack-topic.sh</h4><p>此外，可以看到我们还 volume 了一个脚本进去，那就是创建 SNS 的脚本。实际上这个命令就是 aws cli，在其官网就可以找得到，我们只需要把 <code>aws</code> 换成 <code>awslocal</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">REGION=<span class="variable">$&#123;DEFAULT_REGION:-ap-southeast-2&#125;</span></span><br><span class="line">TOPIC_NAME=demo-events-topic</span><br><span class="line"></span><br><span class="line">awslocal sns create-topic --name=<span class="variable">$&#123;TOPIC_NAME&#125;</span> --region <span class="string">"<span class="variable">$&#123;REGION&#125;</span>"</span></span><br></pre></td></tr></table></figure>
+<h4 id="启动日志"><a href="#启动日志" class="headerlink" title="启动日志"></a>启动日志</h4><p>当启动 <code>docker-compose up localstack</code> 的时候，就在该容器中创建好了 SNS 服务提供给我们使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">sns_1            | Waiting <span class="keyword">for</span> all LocalStack services to be ready</span><br><span class="line">sns_1            | 2020-12-27 07:02:36,554 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified <span class="keyword">in</span> the config file.  If you intend to run as root, you can <span class="built_in">set</span> user=root <span class="keyword">in</span> the config file to avoid this message.</span><br><span class="line">sns_1            | 2020-12-27 07:02:36,559 INFO supervisord started with pid 15</span><br><span class="line">sns_1            | 2020-12-27 07:02:37,566 INFO spawned: <span class="string">'dashboard'</span> with pid 21</span><br><span class="line">sns_1            | 2020-12-27 07:02:37,571 INFO spawned: <span class="string">'infra'</span> with pid 22</span><br><span class="line">sns_1            | 2020-12-27 07:02:37,577 INFO success: dashboard entered RUNNING state, process has stayed up <span class="keyword">for</span> &gt; than 0 seconds (startsecs)</span><br><span class="line">sns_1            | 2020-12-27 07:02:37,577 INFO exited: dashboard (<span class="built_in">exit</span> status 0; expected)</span><br><span class="line">sns_1            | (. .venv/bin/activate; <span class="built_in">exec</span> bin/localstack start --host)</span><br><span class="line">sns_1            | 2020-12-27 07:02:38,591 INFO success: infra entered RUNNING state, process has stayed up <span class="keyword">for</span> &gt; than 1 seconds (startsecs)</span><br><span class="line">sns_1            | LocalStack version: 0.12.1</span><br><span class="line">sns_1            | Starting <span class="built_in">local</span> dev environment. CTRL-C to quit.</span><br><span class="line">sns_1            | 2020-12-27T07:02:39:DEBUG:bootstrap.py: Loading plugins - scope <span class="string">"services"</span>, module <span class="string">"localstack"</span>: &lt;<span class="keyword">function</span> register_localstack_plugins at 0x7f963f120f70&gt;</span><br><span class="line">sns_1            | Waiting <span class="keyword">for</span> all LocalStack services to be ready</span><br><span class="line">sns_1            | 2020-12-27T07:02:43:INFO:localstack.utils.analytics.profiler: Execution of <span class="string">"load_plugin_from_path"</span> took 4333.9550495147705ms</span><br><span class="line">sns_1            | 2020-12-27T07:02:43:INFO:localstack.utils.analytics.profiler: Execution of <span class="string">"load_plugins"</span> took 4334.24186706543ms</span><br><span class="line">sns_1            | Starting edge router (https port 4566)...</span><br><span class="line">sns_1            | Starting mock SNS service on http port 4566 ...</span><br><span class="line">sns_1            | 2020-12-27T07:02:45:INFO:localstack.utils.analytics.profiler: Execution of <span class="string">"prepare_environment"</span> took 2061.4540576934814ms</span><br><span class="line">sns_1            | 2020-12-27T07:02:45:INFO:localstack.multiserver: Starting multi API server process on port 59903</span><br><span class="line">sns_1            | [2020-12-27 07:02:45 +0000] [23] [INFO] Running on https://0.0.0.0:4566 (CTRL + C to quit)</span><br><span class="line">sns_1            | 2020-12-27T07:02:45:INFO:hypercorn.error: Running on https://0.0.0.0:4566 (CTRL + C to quit)</span><br><span class="line">sns_1            | [2020-12-27 07:02:45 +0000] [23] [INFO] Running on http://0.0.0.0:59903 (CTRL + C to quit)</span><br><span class="line">sns_1            | 2020-12-27T07:02:45:INFO:hypercorn.error: Running on http://0.0.0.0:59903 (CTRL + C to quit)</span><br><span class="line">sns_1            | 2020-12-27 07:02:45,824:API:  * Running on http://0.0.0.0:57589/ (Press CTRL+C to quit)</span><br><span class="line">sns_1            | Waiting <span class="keyword">for</span> all LocalStack services to be ready</span><br><span class="line">sns_1            | Ready.</span><br><span class="line">sns_1            | 2020-12-27T07:02:50:INFO:localstack.utils.analytics.profiler: Execution of <span class="string">"start_api_services"</span> took 5102.221965789795ms</span><br><span class="line">sns_1            | /usr/<span class="built_in">local</span>/bin/docker-entrypoint.sh: running /docker-entrypoint-initaws.d/create-localstack-topic.sh</span><br><span class="line">sns_1            | &#123;</span><br><span class="line">sns_1            |     <span class="string">"TopicArn"</span>: <span class="string">"arn:aws:sns:ap-southeast-2:000000000000:demo-events-topic"</span></span><br><span class="line">sns_1            | &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在命令行调用"><a href="#在命令行调用" class="headerlink" title="在命令行调用"></a>在命令行调用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws --endpoint-url=http://localhost:4566 sns publish --topic-arn arn:aws:sns:ap-southeast-2:000000000000:demo-events-topic --region ap-southeast-2 --message <span class="string">"Hello SNS"</span></span><br></pre></td></tr></table></figure>
+<p>注意，在本地使用 aws 命令调用 localstack 中的服务的时候，需要覆盖<code>endpoint-url</code>, 否则回去拿着 credentials 调用实际环境的服务。</p>
+<h4 id="在-SpringBoot-中使用的注意点"><a href="#在-SpringBoot-中使用的注意点" class="headerlink" title="在 SpringBoot 中使用的注意点"></a>在 SpringBoot 中使用的注意点</h4><p>在 SpringBoot 或者其他代码库（如node）中使用的话，可以根据不同的环境创建不同的 <code>SNSClient</code>， 本地环境的注意要覆盖 endpoint：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Profile</span>(&#123;<span class="string">"local"</span>, <span class="string">"docker"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalSnsClientConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;aws.sns.endpoint&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String awsSnsEndpoint;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SnsClient <span class="title">snsClient</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> clientBuilder = SnsClient.builder();</span><br><span class="line">        <span class="keyword">if</span> (!Strings.isNullOrEmpty(awsSnsEndpoint)) &#123;</span><br><span class="line">            clientBuilder.endpointOverride(URI.create(awsSnsEndpoint));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> clientBuilder.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="启动多个服务"><a href="#启动多个服务" class="headerlink" title="启动多个服务"></a>启动多个服务</h3><p>上面只是一个启动 SNS 服务的例子，实际使用中，我们都会多种服务结合使用。比如会有一个 SQS 服务， 订阅了 SNS 的 topic，然后去 trigger 一个 lambda，执行相应的一些任务，那么如何在本地实现这些服务的相互订阅与触发呢？实际上只需要在一个 localstack 中启动多个服务然后执行一些脚本建立之间的关系（具体命令和 aws cli 一样）就可以了，如下：</p>
+<h4 id="docker-compose-yml-1"><a href="#docker-compose-yml-1" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.7"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">localstack:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">localstack/localstack:0.12.1</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">localstack</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">app_net</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"4566:4566"</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">SERVICES=sns,sqs,kms,cloudwatch,lambda</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEFAULT_REGION=ap-southeast-2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">LAMBDA_EXECUTOR=docker-reuse</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">LAMBDA_REMOTE_DOCKER=false</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">LAMBDA_DOCKER_NETWORK=host</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DEBUG=1</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">HOST_TMP_FOLDER=$&#123;TMPDIR&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">DOCKER_HOST=unix:///var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">LOCAL_CODE_PATH=$&#123;PWD&#125;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">$&#123;TMPDIR:-/tmp/localstack&#125;:/tmp/localstack</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./auto/create-localstack:/docker-entrypoint-initaws.d/create-localstack.sh</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./kms/kms_seed.yaml:/init/seed.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">app_net:</span></span><br></pre></td></tr></table></figure>
+<h4 id="kms-seed-yaml"><a href="#kms-seed-yaml" class="headerlink" title="kms_seed.yaml"></a>kms_seed.yaml</h4><p>我在这里启动了 sns,sqs,kms,cloudwatch,lambda。 比较值得一说的除了在本地访问 sqs, sns, kms 等需要覆盖掉 <code>endpoint-url</code>之外， 在本地使用 kms 还需要指定一个 <code>seed.yml</code> 来用它进行加解密。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Keys:</span></span><br><span class="line">  <span class="attr">Symmetric:</span></span><br><span class="line">    <span class="attr">Aes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">Metadata:</span></span><br><span class="line">          <span class="attr">KeyId:</span> <span class="string">832ac356-3c82-4c4d-a3dc-7489da152197</span></span><br><span class="line">        <span class="attr">BackingKeys:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">2bdaead27fe7da2de47945d34cd6d79e36494e73802f3cd3869f1d2cb0b5d74c</span></span><br><span class="line"><span class="attr">Aliases:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">AliasName:</span> <span class="string">alias/testing</span></span><br><span class="line">    <span class="attr">TargetKeyId:</span> <span class="string">832ac356-3c82-4c4d-a3dc-7489da152197</span></span><br></pre></td></tr></table></figure>
+<h4 id="创建脚本-create-localstack-sh"><a href="#创建脚本-create-localstack-sh" class="headerlink" title="创建脚本 create-localstack.sh"></a>创建脚本 <code>create-localstack.sh</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">QUEUE_NAME=demo-queue</span><br><span class="line">TOPIC_NAME=demo-topic</span><br><span class="line">FUNCTION_NAME=demo-function</span><br><span class="line">APP_ENV=dev</span><br><span class="line"></span><br><span class="line">awslocal sns create-topic --name=$&#123;TOPIC_NAME&#125;</span><br><span class="line">awslocal sqs create-queue --queue-name=$&#123;QUEUE_NAME&#125;</span><br><span class="line">awslocal sns subscribe \</span><br><span class="line">    --topic-arn arn:aws:sns:ap-southeast-2:000000000000:$&#123;TOPIC_NAME&#125; \</span><br><span class="line">    --protocol sqs \</span><br><span class="line">    --notification-endpoint http://localhost:4566/000000000000/$&#123;QUEUE_NAME&#125;</span><br><span class="line"></span><br><span class="line">awslocal lambda create-function \</span><br><span class="line">    --code S3Bucket="__local__",S3Key="$&#123;LOCAL_CODE_PATH&#125;" \</span><br><span class="line">    --function-name $&#123;FUNCTION_NAME&#125; \</span><br><span class="line">    --runtime nodejs12.x \</span><br><span class="line">    --timeout 5 \</span><br><span class="line">    --handler dist/index.handler \</span><br><span class="line">    --role dev \</span><br><span class="line">    --environment "&#123;\"Variables\":&#123;\"APP_ENV\":\"$&#123;APP_ENV&#125;\"&#125;&#125;"</span><br><span class="line"></span><br><span class="line">awslocal lambda create-event-source-mapping \</span><br><span class="line">    --event-source-arn arn:aws:sqs:ap-southeast-2:000000000000:$&#123;QUEUE_NAME&#125; \</span><br><span class="line">    --function-name $&#123;FUNCTION_NAME&#125; \</span><br><span class="line">    --enabled</span><br></pre></td></tr></table></figure>
+<h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><p>直接运行 <code>docker-compose up localstack</code></p>
+<h4 id="本地执行"><a href="#本地执行" class="headerlink" title="本地执行"></a>本地执行</h4><p>现在在命令行发送一条 SNS 的消息，就可以 trigger 我们的 Lambda 执行了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws --endpoint-url=http://localhost:4566 sns publish --topic-arn arn:aws:sns:ap-southeast-2:000000000000:demo-topic --region ap-southeast-2 --message "Hello SNS - SQS - Lambda"</span><br></pre></td></tr></table></figure>
+<p>在 Lambda 的 index.ts 写一个 <code>handler()</code> 方法：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'./overwriteAwsLocalEndpoint'</span>); <span class="comment">//overwrite aws local endpoint,Please keep it here.</span></span><br><span class="line"><span class="keyword">import</span> &#123; SQSEvent, SQSHandler &#125; <span class="keyword">from</span> <span class="string">'aws-lambda'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> handler: SQSHandler = <span class="function">(<span class="params">event: SQSEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(event.Records));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印一下 SQS 的消息体。</p>
+<p><strong>结果如下</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localstack    | &gt; START RequestId: ce5ae5ff-054d-16e0-dc62-71161118d3bd Version: <span class="variable">$LATEST</span></span><br><span class="line">localstack    | &gt; 2020-12-27T09:32:56.373Z	ce5ae5ff-054d-16e0-dc62-71161118d3bd	INFO	[&#123;<span class="string">"body"</span>:<span class="string">"&#123;\"Type\": \"Notification\", \"MessageId\": \"04c12e03-66d0-474a-a60a-f0b3c2451456\", \"Token\": null, \"TopicArn\": \"arn:aws:sns:ap-southeast-2:000000000000:demo-topic\", \"Message\": \"Hello SNS - SQS - Lambda\", \"SubscribeURL\": null, \"Timestamp\": \"2020-12-27T09:32:52.202Z\", \"SignatureVersion\": \"1\", \"Signature\": \"EXAMPLEpH+..\", \"SigningCertURL\": \"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-0000000000000000000000.pem\"&#125;"</span>,<span class="string">"receiptHandle"</span>:<span class="string">"exexifyylldwuznxlicibcanaqvcplpaeoztcdlltkzbsuvwiifvlyixrxwuzrmumlmkggofmiencdxilzoaluyreszdppsbycpxcowwvmeiieeplulkitfztfxzkjazucucauhuobpvlzdcnjdcmygqvbrouxkxoggcfryzqtibyquhikawczuif"</span>,<span class="string">"md5OfBody"</span>:<span class="string">"d96df71c445e9282ed4c2fefbf4c8ca1"</span>,<span class="string">"eventSourceARN"</span>:<span class="string">"arn:aws:sqs:ap-southeast-2:000000000000:demo-queue"</span>,<span class="string">"eventSource"</span>:<span class="string">"aws:sqs"</span>,<span class="string">"awsRegion"</span>:<span class="string">"ap-southeast-2"</span>,<span class="string">"messageId"</span>:<span class="string">"a59f7c57-651b-54f6-70bd-a2933fa57099"</span>,<span class="string">"attributes"</span>:&#123;<span class="string">"SenderId"</span>:<span class="string">"AIDAIT2UOQQY3AUEKVGXU"</span>,<span class="string">"SentTimestamp"</span>:<span class="string">"1609061572241"</span>,<span class="string">"ApproximateReceiveCount"</span>:<span class="string">"1"</span>,<span class="string">"ApproximateFirstReceiveTimestamp"</span>:<span class="string">"1609061572312"</span>&#125;,<span class="string">"messageAttributes"</span>:&#123;&#125;,<span class="string">"md5OfMessageAttributes"</span>:null,<span class="string">"sqs"</span>:<span class="literal">true</span>&#125;]</span><br><span class="line">localstack    | &gt; END RequestId: ce5ae5ff-054d-16e0-dc62-71161118d3bd</span><br><span class="line">localstack    | &gt; REPORT RequestId: ce5ae5ff-054d-16e0-dc62-71161118d3bd	Init Duration: 3381.65 ms	Duration: 13.13 ms	Billed Duration: 100 ms	Memory Size: 1536 MB	Max Memory Used: 55 MB</span><br></pre></td></tr></table></figure>
+<h3 id="关于-LocalStack-中-Lambda-的使用"><a href="#关于-LocalStack-中-Lambda-的使用" class="headerlink" title="关于 LocalStack 中 Lambda 的使用"></a>关于 LocalStack 中 Lambda 的使用</h3><p>在本地创建 Lambda 运行环境是我觉得诸多 service 中比较麻烦的一个，以下是官方对于 Lambda 的创建时候的<a href="https://github.com/localstack/localstack#configurations" target="_blank" rel="noopener">配置详解</a></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">STEPFUNCTIONS<span class="emphasis">_LAMBDA_</span>ENDPOINT: URL to use as the Lambda service endpoint in Step Functions. By default this is the LocalStack Lambda endpoint. Use default to select the original AWS Lambda endpoint.</span><br><span class="line"></span><br><span class="line">LAMBDA_EXECUTOR: Method to use for executing Lambda functions. Possible values are:</span><br><span class="line"></span><br><span class="line"><span class="bullet">	- </span>local: run Lambda functions in a temporary directory on the local machine</span><br><span class="line"><span class="bullet">	- </span>docker: run each function invocation in a separate Docker container</span><br><span class="line"><span class="bullet">	- </span>docker-reuse: create one Docker container per function and reuse it across invocations</span><br><span class="line"><span class="code">	For docker and docker-reuse, if LocalStack itself is started inside Docker, then the docker command needs to be available inside the container (usually requires to run the container in privileged mode). Default is docker, fallback to local if Docker is not available.</span></span><br><span class="line"></span><br><span class="line">LAMBDA<span class="emphasis">_REMOTE_</span>DOCKER: determines whether Lambda code is copied or mounted into containers. Possible values are:</span><br><span class="line"></span><br><span class="line"><span class="bullet">	- </span>true (default): your Lambda function definitions will be passed to the container by copying the zip file (potentially slower). It allows for remote execution, where the host and the client are not on the same machine.</span><br><span class="line"><span class="bullet">	- </span>false: your Lambda function definitions will be passed to the container by mounting a volume (potentially faster). This requires to have the Docker client and the Docker host on the same machine.</span><br><span class="line"></span><br><span class="line">LAMBDA<span class="emphasis">_DOCKER_</span>NETWORK: Optional Docker network for the container running your lambda function.</span><br><span class="line"></span><br><span class="line">LAMBDA<span class="emphasis">_DOCKER_</span>DNS: Optional DNS server for the container running your lambda function.</span><br><span class="line"></span><br><span class="line">LAMBDA<span class="emphasis">_CONTAINER_</span>REGISTRY: Use an alternative docker registry to pull lambda execution containers (default: lambci/lambda).</span><br><span class="line"></span><br><span class="line">LAMBDA<span class="emphasis">_REMOVE_</span>CONTAINERS: Whether to remove containers after Lambdas finished executing (default: true).</span><br></pre></td></tr></table></figure>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><ol>
+<li>为什么我使用 SNS、KMS 总是报一些 client 的 credentials 的错误？<ul>
+<li>因为没有覆盖 本地环境需要的 endpoint-url， 参考本文中的解释</li>
+</ul>
+</li>
+<li>为什么给 SNS 发消息成功了却没有触发到 Lambda？<ul>
+<li>请检查你的创建脚本，确保你的 SQS 订阅了 SNS 的对应 topic，SQS 有能够触发 Lambda 的 Mapping</li>
+</ul>
+</li>
+<li>本例代码库地址？<ul>
+<li><a href="https://github.com/Fatezhang/aws-localstack-demo" target="_blank" rel="noopener">Fatezhang/aws-localstack-demo</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果你在使用 localstack 的时候遇到了什么问题，欢迎告诉我一起研究讨论。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wx.jpg" alt="陈年风楼 wechat" style="width: 200px; max-width: 100%;">
+    <div>Add my WeChat, share tech-skills to each other 🙆‍</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AWS/" rel="tag"><i class="fa fa-tag"></i> AWS</a>
+          
+            <a href="/tags/localstack/" rel="tag"><i class="fa fa-tag"></i> localstack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/20200705/Make-everything-interrupted-reboot/" rel="next" title="让一切被中断的重新启动">
+                <i class="fa fa-chevron-left"></i> 让一切被中断的重新启动
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png" alt="陈年风楼">
+            
+              <p class="site-author-name" itemprop="name">陈年风楼</p>
+              <p class="site-description motion-element" itemprop="description">真正的大师永远都怀着一颗学徒的心！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/tags.html">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fatezhang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qq_26627671" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-copyright"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhangjiahengpoping@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhangjiaheng1874" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                他山之石
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.homuralovelive.com/" title="Da Tui's blog[大蜕の个人博客]" target="_blank">Da Tui's blog[大蜕の个人博客]</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hamger.github.io/" title="Hanger's blog[一个努力的前端小哥]" target="_blank">Hanger's blog[一个努力的前端小哥]</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xuanwo.io/" title="Xuanwo's blog[一个牛逼的后端大佬]" target="_blank">Xuanwo's blog[一个牛逼的后端大佬]</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://crossoverjie.top/" title="Crossover jie's blog[一个经常出现在视线里的博主]" target="_blank">Crossover jie's blog[一个经常出现在视线里的博主]</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.hollischuang.com/" title="HollisChuang's blog[一个Java大佬]" target="_blank">HollisChuang's blog[一个Java大佬]</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用？"><span class="nav-text">如何使用？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例：使用-LocalStack-创建一个-SNS服务"><span class="nav-text">例：使用 LocalStack 创建一个 SNS服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-compose-yml"><span class="nav-text">docker-compose.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-localstack-topic-sh"><span class="nav-text">create-localstack-topic.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动日志"><span class="nav-text">启动日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在命令行调用"><span class="nav-text">在命令行调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在-SpringBoot-中使用的注意点"><span class="nav-text">在 SpringBoot 中使用的注意点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动多个服务"><span class="nav-text">启动多个服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-compose-yml-1"><span class="nav-text">docker-compose.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kms-seed-yaml"><span class="nav-text">kms_seed.yaml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建脚本-create-localstack-sh"><span class="nav-text">创建脚本 create-localstack.sh</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地启动"><span class="nav-text">本地启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地执行"><span class="nav-text">本地执行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-LocalStack-中-Lambda-的使用"><span class="nav-text">关于 LocalStack 中 Lambda 的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-text">FAQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈年风楼</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点字数统计&#58;</span>
+    
+    <span title="站点字数统计">59.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">博客使用 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 搭建</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人访问
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次查看
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "vertical";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+  <script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+
+</body>
+</html>
