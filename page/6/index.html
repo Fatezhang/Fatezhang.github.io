@@ -313,6 +313,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20181112/nodepad-不用插件去重的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈年风楼">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈年风楼 | 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/blog/20181112/nodepad-不用插件去重的方法/" itemprop="url">Nodepad++不用插件去重的方法</a></h1>
+        
+
+        <div class="post-meta">
+
+	  
+
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T13:54:14+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类：</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  132 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 min
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在工作中，当我们需要对一个文本中的行进行去重统计的时候，会发现对于文本的去重并不是那么好处理。而nodepad++的去重插件一般人又懒得去安装，不巧在网上找到这样一个去重的小技巧，即使用正则表达式进行去重，简直方便快捷。<br>在这里分享出来，希望大家能够用的上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(.*?)$\s+?^(?=.*^\1$)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://blog.yimik.com/wp-content/uploads/2015/11/rm_duplicate_rows.png" alt="使用nodepad++去重"></p>
+<p>点击全部替换，就可以将重复行全部去掉喽</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20181011/使用-Git-进行-Squash-commit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,7 +622,7 @@
 <h2 id="Git-更改-commit-的操作"><a href="#Git-更改-commit-的操作" class="headerlink" title="Git 更改 commit 的操作"></a>Git 更改 commit 的操作</h2><ol>
 <li><p><code>git rebase -i HEAD~&lt;number 代表需要处理几个 commit&gt;</code></p>
 </li>
-<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Rebase ddebba2..a54dc28 onto 9d9ba60 (15 commands)</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Commands:</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> p, pick &lt;commit&gt; = use commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> r, reword &lt;commit&gt; = use commit, but edit the commit message</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> e, edit &lt;commit&gt; = use commit, but stop <span class="keyword">for</span> amending</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> s, squash &lt;commit&gt; = use commit, but meld into previous commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> f, fixup &lt;commit&gt; = like <span class="string">"squash"</span>, but discard this commit<span class="string">'s log message</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> x, <span class="built_in">exec</span> &lt;<span class="built_in">command</span>&gt; = run <span class="built_in">command</span> (the rest of the line) using shell</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> b, <span class="built_in">break</span> = stop here (<span class="built_in">continue</span> rebase later with <span class="string">'git rebase --continue'</span>)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> d, drop &lt;commit&gt; = remove commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> l, label &lt;label&gt; = label current HEAD with a name</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> t, reset &lt;label&gt; = reset HEAD to a label</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [<span class="comment"># &lt;oneline&gt;]</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> .       create a merge commit using the original merge commit<span class="string">'s</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> .       message (or the oneline, <span class="keyword">if</span> no original merge commit was</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> .       specified). Use -c &lt;commit&gt; to reword the commit message.</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> These lines can be re-ordered; they are executed from top to bottom.</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> If you remove a line here THAT COMMIT WILL BE LOST.</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> However, <span class="keyword">if</span> you remove everything, the rebase will be aborted.</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Note that empty commits are commented out</span></span><br></pre></td></tr></table></figure>
+<li><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Rebase ddebba2..a54dc28 onto 9d9ba60 (15 commands)</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Commands:</span><br><span class="line"><span class="meta">#</span> p, pick &lt;commit&gt; = use commit</span><br><span class="line"><span class="meta">#</span> r, reword &lt;commit&gt; = use commit, but edit the commit message</span><br><span class="line"><span class="meta">#</span> e, edit &lt;commit&gt; = use commit, but stop for amending</span><br><span class="line"><span class="meta">#</span> s, squash &lt;commit&gt; = use commit, but meld into previous commit</span><br><span class="line"><span class="meta">#</span> f, fixup &lt;commit&gt; = like "squash", but discard this commit's log message</span><br><span class="line"><span class="meta">#</span> x, exec &lt;command&gt; = run command (the rest of the line) using shell</span><br><span class="line"><span class="meta">#</span> b, break = stop here (continue rebase later with 'git rebase --continue')</span><br><span class="line"><span class="meta">#</span> d, drop &lt;commit&gt; = remove commit</span><br><span class="line"><span class="meta">#</span> l, label &lt;label&gt; = label current HEAD with a name</span><br><span class="line"><span class="meta">#</span> t, reset &lt;label&gt; = reset HEAD to a label</span><br><span class="line"><span class="meta">#</span> m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span><br><span class="line"><span class="meta">#</span> .       create a merge commit using the original merge commit's</span><br><span class="line"><span class="meta">#</span> .       message (or the oneline, if no original merge commit was</span><br><span class="line"><span class="meta">#</span> .       specified). Use -c &lt;commit&gt; to reword the commit message.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> However, if you remove everything, the rebase will be aborted.</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>根据上面每一个指令操作，更改以下类似内容：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pick 54f205a Update README.md</span><br><span class="line">pick e1deb05 Update README.md</span><br><span class="line">pick 3a33ad2 Update README.md</span><br><span class="line">pick 225a513 Update README.md</span><br><span class="line">pick d44d34b Update README.md</span><br><span class="line">pick 657d8c2 Update README.md</span><br></pre></td></tr></table></figure>
@@ -1588,190 +1766,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangjiaheng.cn/blog/20180127/spring-boot微服务搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈年风楼">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈年风楼 | 博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/20180127/spring-boot微服务搭建/" itemprop="url">Spring-Boot微服务搭建</a></h1>
-        
-
-        <div class="post-meta">
-
-	  
-
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T17:01:21+08:00">
-                2018-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类：</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/springboot/" itemprop="url" rel="index">
-                    <span itemprop="name">springboot</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,017 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 min
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://blog.csdn.net/qq_26627671/article/details/76563127" target="_blank" rel="noopener">本人的csdn传送门</a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>进行web开发的时候Java程序员们难免会碰到那种很小的服务，比如就提供一个生成订单号的接口，或者一个上传文件的服务。而这时我们再去使用SpringMVC这种体量稍大、配置繁琐的框架开发难免会加大工作量，而且是不必要的。这个时候我们就可以选择使用这个微服务框架——springboot进行开发。</p>
-</blockquote>
-<p>Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/blog/20180127/spring-boot微服务搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1824,7 +1818,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1957,7 +1951,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
