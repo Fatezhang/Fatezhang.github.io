@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhangjiaheng.cn/blog/20210120/spring-boot-to-2-4-2/</loc>
+    
+    <lastmod>2021-01-20T13:34:03.766Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhangjiaheng.cn/blog/20210113/%E4%BD%BF%E7%94%A8-UPic-GitHub-%E5%81%9A%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/</loc>
     
     <lastmod>2021-01-13T13:50:43.172Z</lastmod>
@@ -107,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://zhangjiaheng.cn/categories/index.html</loc>
+    <loc>http://zhangjiaheng.cn/message/index.html</loc>
     
     <lastmod>2019-11-01T01:40:48.280Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhangjiaheng.cn/message/index.html</loc>
+    <loc>http://zhangjiaheng.cn/categories/index.html</loc>
     
     <lastmod>2019-11-01T01:40:48.280Z</lastmod>
     
