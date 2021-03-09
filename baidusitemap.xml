@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://zhangjiaheng.cn/blog/20210120/spring-boot-to-2-4-2/</loc>
-    <lastmod>2021-01-20</lastmod>
+    <lastmod>2021-03-09</lastmod>
+  </url>  <url>
+    <loc>http://zhangjiaheng.cn/blog/20200129/Java-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2021-03-09</lastmod>
   </url>  <url>
     <loc>http://zhangjiaheng.cn/blog/20210113/%E4%BD%BF%E7%94%A8-UPic-GitHub-%E5%81%9A%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/</loc>
     <lastmod>2021-01-13</lastmod>
@@ -23,9 +26,6 @@
     <lastmod>2020-12-27</lastmod>
   </url>  <url>
     <loc>http://zhangjiaheng.cn/blog/20191025/SpringCloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2020-12-27</lastmod>
-  </url>  <url>
-    <loc>http://zhangjiaheng.cn/blog/20200129/Java-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2020-12-27</lastmod>
   </url>  <url>
     <loc>http://zhangjiaheng.cn/blog/20200705/Make-everything-interrupted-reboot/</loc>

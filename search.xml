@@ -3,7 +3,7 @@
   <entry>
     <title>由 SpringBoot 升级到 2.4.2 引发的 Jackson 的 JsonFormat 问题排查</title>
     <url>/blog/20210120/spring-boot-to-2-4-2/</url>
-    <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/8HJN1K.jpg" alt="8HJN1K"></p>
+    <content><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/3hmYwN.jpg" alt="3hmYwN"></p>
 <a id="more"></a>
 <h2 id="事情是这样的"><a href="#事情是这样的" class="headerlink" title="事情是这样的"></a>事情是这样的</h2><p>在不久的以前，我们项目的 Tech Lead 决定在git repo中引入 DependaBot 来对项目中的依赖做检查并升级。我们的一个使用 SpringBoot 的服务也就这样成了待升级依赖的一份子。我们待升级的依赖包括但不限于：</p>
 <ul>
