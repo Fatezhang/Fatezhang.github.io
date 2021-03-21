@@ -306,8 +306,10 @@ hr {
 }
 blockquote {
   padding: 0 15px;
-  color: #666;
+  color: #000;
+  background-color: #555;
   border-left: 4px solid #ddd;
+  font-weight: bold;
 }
 blockquote cite::before {
   content: "-";
@@ -1386,6 +1388,9 @@ pre .javascript .function {
 }
 .posts-expand .post-body ul li {
   list-style: circle;
+  font-family: cursive;
+  font-weight: bold;
+  color: #f90;
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
@@ -1614,6 +1619,9 @@ pre .javascript .function {
 }
 .posts-expand .post-body ul li {
   list-style: circle;
+  font-family: cursive;
+  font-weight: bold;
+  color: #f90;
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
@@ -2216,7 +2224,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #73a700;
+  background: #ffff54;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3349,4 +3357,13 @@ hr {
     background-color: #000;
     color: #fff;
   }
+}
+.clock-container {
+  background-color: #433a2c;
+}
+.site-overview {
+  text-align: center;
+}
+canvas#canvas {
+  margin-top: 20px;
 }
