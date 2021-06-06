@@ -318,7 +318,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈年风楼">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/heartbeat.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -446,7 +446,7 @@
 <a id="more"></a>
 <h3 id="在dubbo消费者服务中写aop方法拦截工具类中的方法"><a href="#在dubbo消费者服务中写aop方法拦截工具类中的方法" class="headerlink" title="在dubbo消费者服务中写aop方法拦截工具类中的方法"></a>在dubbo消费者服务中写aop方法拦截工具类中的方法</h3><p>尽管服务的提供者和消费者都引入的工具类模块的依赖，但是拦截器的实际拦截的还是那个实际本身所在模块的方法。如果工具类是在消费者service层被使用的，那么在上层模块的拦截器是无法拦截到这个方法的。</p>
 <h3 id="在dubbo服务中手动获取注册的提供者的bean"><a href="#在dubbo服务中手动获取注册的提供者的bean" class="headerlink" title="在dubbo服务中手动获取注册的提供者的bean"></a>在dubbo服务中手动获取注册的提供者的bean</h3><p>在这里犯的错：以为通过SpringContextHolder.getBean()可以获取，是我傻逼了，dubbo中的服务怎么能用spring上下文获取呢。这里我使用dubbo的方式完成了这个功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取服务的代理对象</span><br><span class="line"> *</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">public static &lt;T&gt; T getReferenceConfig(String appName,String address,Class&lt;?&gt; interfaceClass) &#123;</span><br><span class="line">    String key  = interfaceClass.getName();</span><br><span class="line">    ReferenceConfig&lt;T&gt; referenceConfig =  (ReferenceConfig&lt;T&gt;)referenceCache.get(key);</span><br><span class="line">    if(referenceConfig == null)&#123;</span><br><span class="line">        referenceConfig = new ReferenceConfig&lt;T&gt;();</span><br><span class="line"></span><br><span class="line">        referenceConfig.setApplication(application);</span><br><span class="line">        referenceConfig.setRegistry(getRegistryConfig(appName,address));</span><br><span class="line">        referenceConfig.setInterface(interfaceClass);</span><br><span class="line"></span><br><span class="line">        referenceCache.put(key,referenceConfig);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return referenceConfig.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -602,7 +602,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png" alt="陈年风楼">
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/heartbeat.gif" alt="陈年风楼">
             
               <p class="site-author-name" itemprop="name">陈年风楼</p>
               <p class="site-description motion-element" itemprop="description">真正的大师永远都怀着一颗学徒的心！</p>
@@ -637,7 +637,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/tags.html">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">77</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

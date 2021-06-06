@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Java基础,开发日记,">
+  <meta name="keywords" content="开发日记,Java基础,">
 
 
 
@@ -86,7 +86,7 @@
 
 
 <meta name="description" content="在Java8中对于Map的操作新增的compute之类的方法，对于开发中很有帮助，在此处整理一下其用法，以及方法之间的异同，具体的先总结一下如下： 总结computeIfPresent 就是根据方法来，返回方法中的值对原值进行替换，新的为null就删除键值对，但是原值为null新值不为null依然返回nullcomputeIfAbsent  就是根据旧值来，旧的没有再根据方法返回的来，旧值存在就返">
-<meta name="keywords" content="Java基础,开发日记">
+<meta name="keywords" content="开发日记,Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中map新的骚操作">
 <meta property="og:url" content="http://zhangjiaheng.cn/blog/20181209/Java中map新的骚操作/index.html">
@@ -318,7 +318,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈年风楼">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/heartbeat.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -446,7 +446,7 @@
 </blockquote>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package test;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line"></span><br><span class="line">public class MapTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        map.put(1,&quot;zhang&quot;);</span><br><span class="line">        // computeIfPresent 根据之前的key/value 如果oldValue 不为null 则根据提供的方法返回一个新的值 并进行新值对旧值的替换</span><br><span class="line">        System.out.println(&quot; 1 ---&gt; &quot; + map.computeIfPresent(1,(key,value)-&gt;&#123;</span><br><span class="line">            return key + value;//原值不为null新值不为null 新值替换旧值</span><br><span class="line">        &#125;));</span><br><span class="line">        // 否则删除键值对</span><br><span class="line">        System.out.println(&quot; 2 ---&gt; &quot; + map.computeIfPresent(1,(key,value)-&gt;&#123;</span><br><span class="line">            return null;//原值不为null新值为null 删除键值对</span><br><span class="line">        &#125;));</span><br><span class="line">        map.put(1,null);</span><br><span class="line">        System.out.println(&quot; 3 ---&gt; &quot; + map.computeIfPresent(1,(key,value)-&gt;&#123;</span><br><span class="line">            return &quot;jiaheng&quot;;//原值为null 不做更改</span><br><span class="line">        &#125;));</span><br><span class="line">        // computeIfAbsent 根据之前的key 如果旧值为空或者key不存在 就按照方法用新值替换旧值 新值为null不做替换</span><br><span class="line">        map.put(1,&quot;zhang&quot;);</span><br><span class="line">        System.out.println(&quot; 4 ---&gt; &quot; + map.computeIfAbsent(1,k-&gt;&#123;</span><br><span class="line">            return null;// 不会被替换旧值 返回原值</span><br><span class="line">        &#125;));</span><br><span class="line">        System.out.println(&quot; 5 ---&gt; &quot; + map.computeIfAbsent(2,k-&gt;&#123;</span><br><span class="line">            k = k*k;</span><br><span class="line">            return k.toString();// key=2不存在 直接新建并存入新值</span><br><span class="line">        &#125;));</span><br><span class="line">        // compute类似于computeIfAbsent和computeIfPresent的合体</span><br><span class="line">        map.put(1,null);</span><br><span class="line">        System.out.println(&quot; 6 ---&gt; &quot; + map.compute(1,(k,v)-&gt;&#123;</span><br><span class="line">            return &quot;张&quot;;// 原值为null新值不为null 新值替换旧值 此处与computeIfPresent不同</span><br><span class="line">        &#125;));</span><br><span class="line">        System.out.println(&quot; 7 ---&gt; &quot; + map.compute(1,(k,v)-&gt;&#123;</span><br><span class="line">            v = (k*10) + v;</span><br><span class="line">            return v;// 新值不为null 替换旧值</span><br><span class="line">        &#125;));</span><br><span class="line">        System.out.println(&quot; 8 ---&gt; &quot; + map.compute(1,(k,v)-&gt;&#123;</span><br><span class="line">            return null;// 新值为null 删除键值对</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">        // 总结</span><br><span class="line">        // computeIfPresent 就是根据方法来，返回方法中的值对原值进行替换，新的为null就删除键值对，但是原值为null新值不为null依然返回null</span><br><span class="line">        // computeIfAbsent  就是根据旧值来，旧的没有再根据方法返回的来，旧值存在就返回旧值</span><br><span class="line">        // compute          就是两者结合，新值为null，就删除键值对；新值不为null就进行替换。</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -471,9 +471,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java基础/" rel="tag"><i class="fa fa-tag"></i> Java基础</a>
-          
             <a href="/tags/开发日记/" rel="tag"><i class="fa fa-tag"></i> 开发日记</a>
+          
+            <a href="/tags/Java基础/" rel="tag"><i class="fa fa-tag"></i> Java基础</a>
           
         </div>
       
@@ -602,7 +602,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/logo.png" alt="陈年风楼">
+              <img class="site-author-image" itemprop="image" src="https://cdn.jsdelivr.net/gh/Fatezhang/FigureCloud@master/uPic/heartbeat.gif" alt="陈年风楼">
             
               <p class="site-author-name" itemprop="name">陈年风楼</p>
               <p class="site-description motion-element" itemprop="description">真正的大师永远都怀着一颗学徒的心！</p>
@@ -637,7 +637,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/tags.html">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">77</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
